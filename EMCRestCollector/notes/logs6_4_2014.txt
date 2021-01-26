@@ -1,0 +1,1748 @@
+
+D:\EMC TEST\EMCConnectorCallAllMethods>run
+
+D:\EMC TEST\EMCConnectorCallAllMethods>"C:\Program Files\Java\jdk1.7.0_15\bin\java.exe" -cp * com.emc.celerra.api.EMCRunner queries
+23:14:21,398 INFO  [main                     ] api.EMCApp                     - Connecting to CelerraConnector
+23:14:23,052 INFO  [main                     ] api.EMCApp                     - Finding files in [queries]
+23:14:23,054 INFO  [main                     ] api.EMCApp                     - Running round robin query for the following calls [[queries\CelerraSystemQueryParams.xml, queries\CheckpointQueryParams.xml, queries\CifsConfigQueryParams.xml, queries\CifsServerQueryParams.xml, queries\CifsShareQueryParams.xml, queries\ClariionDeviceQueryParams.xml, queries\ClariionDiskQueryParams.xml, queries\ClariionGeneralConfigQueryParams.xml, queries\ClariionRaidGroupQueryParams.xml, queries\ClariionSpQueryParams.xml, queries\ControlStationQueryParams.xml, queries\DhsmConnectionQueryParam.xml, queries\EncodingConfigQueryParams.xml, queries\EncodingQueryParams.xml, queries\EventQueryParams.xml, queries\FileSystemLocationQueryParams.xml, queries\FileSystemQueryParams.xml, queries\IscsiLunQueryParams.xml, queries\IscsiMaskQueryParams.xml, queries\IscsiServiceQueryParams.xml, queries\IscsiSharedSecretQueryParams.xml, queries\IscsiTargetQueryParams.xml, queries\MountQueryParams.xml, queries\MoverHostQuery
+Params.xml, queries\MoverHttpFeatureQueryParams.xml, queries\MoverQueryParams.xml, queries\NfsExportQueryParams.xml, queries\SnmpServiceQueryParams.xml, queries\StoragePoolQueryParams.xml, queries\StorageSystemQueryParams.xml, queries\SubscribeStats.xml, queries\SubscribeStats1.xml, queries\SymmDeviceQueryParams.xml, queries\SymmDirectorQueryParams.xml, queries\SymmGeneralConfigQueryParams.xml, queries\SymmPhysicalDiskQueryParams.xml, queries\TreeQuotaQueryParams.xml, queries\UserAccountQueryParams.xml, queries\UserQuotaQueryParams.xml, queries\VdmQueryParams.xml, queries\VolumeQueryParams.xml]]
+23:14:23,075 INFO  [main                     ] api.EMCApp                     -
+23:14:23,076 INFO  [main                     ] api.EMCApp                     -
+23:14:23,076 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\CelerraSystemQueryParams.xml ================
+23:14:23,077 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Request>
+        <Query>
+            <CelerraSystemQueryParams />
+        </Query>
+    </Request>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Response>
+        <QueryStatus maxSeverity="ok"/>
+        <CelerraSystem type="system" serial="CKM00140700163" productName="VNX5200" wwCid="CKM001407001632007" version="8.1.2-51 " celerra="0">
+            <Status maxSeverity="ok"/>
+        </CelerraSystem>
+    </Response>
+</ResponsePacket>
+
+23:14:27,095 INFO  [main                     ] api.EMCApp                     -
+23:14:27,095 INFO  [main                     ] api.EMCApp                     -
+23:14:27,097 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\CheckpointQueryParams.xml ================
+23:14:27,098 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api" >
+    <Request>
+        <Query>
+            <CheckpointQueryParams/>
+        </Query>
+    </Request>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Response>
+        <QueryStatus maxSeverity="ok"/>
+    </Response>
+</ResponsePacket>
+
+23:14:27,854 INFO  [main                     ] api.EMCApp                     -
+23:14:27,855 INFO  [main                     ] api.EMCApp                     -
+23:14:27,855 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\CifsConfigQueryParams.xml ================
+23:14:27,855 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Request>
+        <Query>
+            <CifsConfigQueryParams>
+                <MoverOrVdm mover="4" moverIdIsVdm="false" />
+            </CifsConfigQueryParams>
+        </Query>
+    </Request>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Response>
+        <Fault maxSeverity="error">
+            <Problem messageCode="14227341323" facility="Prevalidator" component="API" message="Mover with id=4 not found." severity="error">
+                <Description>The mover ID supplied in the request is invalid.</Description>
+                <Action>Refer to the XML API v2 schema/documentation and correct your user program logic.</Action>
+                <Diagnostics>
+Exception tag: 145391d3660
+Exception message: com.emc.nas.ccmd.common.MessageInstanceImpl@5004000b
+</Diagnostics>
+            </Problem>
+        </Fault>
+    </Response>
+</ResponsePacket>
+
+23:14:28,138 INFO  [main                     ] api.EMCApp                     -
+23:14:28,139 INFO  [main                     ] api.EMCApp                     -
+23:14:28,139 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\CifsServerQueryParams.xml ================
+23:14:28,140 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Request>
+        <Query>
+            <CifsServerQueryParams name="GG3DVT11S603">
+                <MoverOrVdm mover="5"/>
+            </CifsServerQueryParams>
+        </Query>
+    </Request>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Response>
+        <Fault maxSeverity="error">
+            <Problem messageCode="14227341323" facility="Prevalidator" component="API" message="Mover with id=5 not found." severity="error">
+                <Description>The mover ID supplied in the request is invalid.</Description>
+                <Action>Refer to the XML API v2 schema/documentation and correct your user program logic.</Action>
+                <Diagnostics>
+Exception tag: 145391d374c
+Exception message: com.emc.nas.ccmd.common.MessageInstanceImpl@5004000b
+</Diagnostics>
+            </Problem>
+        </Fault>
+    </Response>
+</ResponsePacket>
+
+23:14:28,371 INFO  [main                     ] api.EMCApp                     -
+23:14:28,371 INFO  [main                     ] api.EMCApp                     -
+23:14:28,372 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\CifsShareQueryParams.xml ================
+23:14:28,373 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Request>
+        <Query>
+            <CifsShareQueryParams/>
+        </Query>
+    </Request>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Response>
+        <QueryStatus maxSeverity="ok"/>
+    </Response>
+</ResponsePacket>
+
+23:14:29,065 INFO  [main                     ] api.EMCApp                     -
+23:14:29,065 INFO  [main                     ] api.EMCApp                     -
+23:14:29,071 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\ClariionDeviceQueryParams.xml ================
+23:14:29,078 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api"
+               apiVersion="V1_1">
+    <RequestEx>
+        <Query>
+            <ClariionDeviceQueryParams clariion="1">
+                <AspectSelection status="true" config="true"></AspectSelection>
+                <deviceRange start="A" size="10"></deviceRange>
+            </ClariionDeviceQueryParams>
+        </Query>
+    </RequestEx>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+    <ResponseEx/>
+</ResponsePacket>
+
+23:14:29,423 INFO  [main                     ] api.EMCApp                     -
+23:14:29,429 INFO  [main                     ] api.EMCApp                     -
+23:14:29,435 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\ClariionDiskQueryParams.xml ================
+23:14:29,442 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api"
+               apiVersion="V1_1">
+    <RequestEx>
+        <Query>
+            <ClariionDiskQueryParams clariion="1"></ClariionDiskQueryParams>
+        </Query>
+    </RequestEx>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+    <ResponseEx>
+        <ClariionDiskConfig bus="0" enclosureNumber="0" diskNumber="0" state="unbound" vendorId="HITACHI" productId="HUC10906 CLAR600" revision="C430" serialNumber="KSJUKBTR" capacity="1125767168" usedCapacity="0" remappedBlocks="18446744073709551615" storage="1" name="0_0_0"/>
+        <ClariionDiskConfig bus="0" enclosureNumber="0" diskNumber="1" state="unbound" vendorId="HITACHI" productId="HUC10906 CLAR600" revision="C430" serialNumber="KSJUJP2R" capacity="1125767168" usedCapacity="0" remappedBlocks="18446744073709551615" storage="1" name="0_0_1"/>
+        <ClariionDiskConfig bus="0" enclosureNumber="0" diskNumber="2" state="unbound" vendorId="HITACHI" productId="HUC10906 CLAR600" revision="C430" serialNumber="KSJ7S9BR" capacity="1125767168" usedCapacity="0" remappedBlocks="18446744073709551615" storage="1" name="0_0_2"/>
+        <ClariionDiskConfig bus="0" enclosureNumber="0" diskNumber="3" state="unbound" vendorId="HITACHI" productId="HUC10906 CLAR600" revision="C430" serialNumber="KSJGJLJJ" capacity="1125767168" usedCapacity="0" remappedBlocks="18446744073709551615" storage="1" name="0_0_3"/>
+        <ClariionDiskConfig bus="0" enclosureNumber="0" diskNumber="4" state="enabled" vendorId="HITACHI" productId="HUC10906 CLAR600" revision="C430" serialNumber="KSJG084J" capacity="1125767168" usedCapacity="562838272" remappedBlocks="18446744073709551615" storage="1" name="0_0_4"/>
+        <ClariionDiskConfig bus="0" enclosureNumber="0" diskNumber="5" state="enabled" vendorId="HITACHI" productId="HUC10906 CLAR600" revision="C430" serialNumber="KSJUKBHR" capacity="1125767168" usedCapacity="562838272" remappedBlocks="18446744073709551615" storage="1" name="0_0_5"/>
+        <ClariionDiskConfig bus="0" enclosureNumber="0" diskNumber="6" state="enabled" vendorId="HITACHI" productId="HUC10906 CLAR600" revision="C430" serialNumber="KSJUVRLR" capacity="1125767168" usedCapacity="892547891" remappedBlocks="18446744073709551615" storage="1" name="0_0_6"/>
+        <ClariionDiskConfig bus="0" enclosureNumber="0" diskNumber="7" state="enabled" vendorId="HITACHI" productId="HUC10906 CLAR600" revision="C430" serialNumber="KSJGPUTJ" capacity="1125767168" usedCapacity="892547891" remappedBlocks="18446744073709551615" storage="1" name="0_0_7"/>
+        <ClariionDiskConfig bus="0" enclosureNumber="0" diskNumber="8" state="enabled" vendorId="HITACHI" productId="HUC10906 CLAR600" revision="C430" serialNumber="KSJUNLER" capacity="1125767168" usedCapacity="892547891" remappedBlocks="18446744073709551615" storage="1" name="0_0_8"/>
+        <ClariionDiskConfig bus="0" enclosureNumber="0" diskNumber="9" state="enabled" vendorId="HITACHI" productId="HUC10906 CLAR600" revision="C430" serialNumber="KSJUK0MR" capacity="1125767168" usedCapacity="892547891" remappedBlocks="18446744073709551615" storage="1" name="0_0_9"/>
+        <ClariionDiskConfig bus="0" enclosureNumber="0" diskNumber="10" state="enabled" vendorId="HITACHI" productId="HUC10906 CLAR600" revision="C430" serialNumber="KSJUKKDR" capacity="1125767168" usedCapacity="892547891" remappedBlocks="18446744073709551615" storage="1" name="0_0_10"/>
+        <ClariionDiskConfig bus="0" enclosureNumber="0" diskNumber="11" state="unbound" vendorId="HITACHI" productId="HUC10906 CLAR600" revision="C430" serialNumber="KSJGNVZJ" capacity="1125767168" usedCapacity="0" remappedBlocks="18446744073709551615" storage="1" name="0_0_11"/>
+    </ResponseEx>
+</ResponsePacket>
+
+23:14:29,903 INFO  [main                     ] api.EMCApp                     -
+23:14:29,909 INFO  [main                     ] api.EMCApp                     -
+23:14:29,916 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\ClariionGeneralConfigQueryParams.xml ================
+23:14:29,924 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api"
+               apiVersion="V1_1">
+    <RequestEx>
+        <Query>
+            <ClariionGeneralConfigQueryParams
+                    clariion="1"></ClariionGeneralConfigQueryParams>
+        </Query>
+    </RequestEx>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+    <ResponseEx>
+        <ClariionConfig name="CKM00140700163" uid="50060160886025fc0000000000000000" modelNumber="Model-VNX5200" modelType="rackmount" clariionDevices="6" physicalDisks="12" visibleDevices="4" raidGroups="2" storageGroups="2" snapshot="1396822434" cachePageSize="8" lowWaterMark="-1.0" highWaterMark="-1.0" unassignedCachePages="-1" storage="1"/>
+    </ResponseEx>
+</ResponsePacket>
+
+23:14:30,305 INFO  [main                     ] api.EMCApp                     -
+23:14:30,311 INFO  [main                     ] api.EMCApp                     -
+23:14:30,318 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\ClariionRaidGroupQueryParams.xml ================
+23:14:30,325 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api"
+               apiVersion="V1_1">
+    <RequestEx>
+        <Query>
+            <ClariionRaidGroupQueryParams clariion="1" />
+        </Query>
+    </RequestEx>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+    <ResponseEx>
+        <ClariionRaidGroupConfig raidType="raid-5" state="valid-luns" rawCapacity="4502487040" logicalCapacity="4502478848" usedCapacity="4462768128" disks="0_0_6 0_0_7 0_0_8 0_0_9 0_0_10" devices="0 1 3 20 21" storage="1" id="0000"/>
+        <ClariionRaidGroupConfig raidType="raid-1" state="valid-luns" rawCapacity="1125687296" logicalCapacity="1125681152" usedCapacity="1125681152" disks="0_0_4 0_0_5" devices="2" storage="1" id="0001"/>
+    </ResponseEx>
+</ResponsePacket>
+
+23:14:30,705 INFO  [main                     ] api.EMCApp                     -
+23:14:30,711 INFO  [main                     ] api.EMCApp                     -
+23:14:30,718 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\ClariionSpQueryParams.xml ================
+23:14:30,725 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api"
+               apiVersion="V1_1">
+    <RequestEx>
+        <Query>
+            <ClariionSpQueryParams clariion="1">
+                <AspectSelection status="true" config="true"></AspectSelection>
+            </ClariionSpQueryParams>
+        </Query>
+    </RequestEx>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+    <ResponseEx>
+        <ClariionSPConfig  signature="3686624" microcodeRev="05.33.000.5.051" serialNumber="CF2BN140400224" promRev="7.20.00" agentRev="7.33.2 (0.51)" physicalMemorySize="16384" systemBufferSize="-1" readCacheSize="-1" writeCacheSize="-1" freeMemorySize="-1" raid3MemorySize="-1" storage="1" id="A">
+            <Port portNumber="0" portUid="50060160886025fc50060160086025fc" switchUid="00000000000000000000000000000000"/>
+            <Port portNumber="1" portUid="50060160886025fc50060161086025fc" switchUid="00000000000000000000000000000000"/>
+            <Port portNumber="2" portUid="50060160886025fc50060162086025fc" switchUid="00000000000000000000000000000000"/>
+            <Port portNumber="3" portUid="50060160886025fc50060163086025fc" switchUid="00000000000000000000000000000000"/>
+            <Port portNumber="8" portUid="50060160886025fc50060160086425fc" switchUid="00000000000000000000000000000000"/>
+            <Port portNumber="9" portUid="50060160886025fc50060161086425fc" switchUid="00000000000000000000000000000000"/>
+            <Port portNumber="10" portUid="50060160886025fc50060162086425fc" switchUid="00000000000000000000000000000000"/>
+            <Port portNumber="11" portUid="50060160886025fc50060163086425fc" switchUid="00000000000000000000000000000000"/>
+            <Port portNumber="4" portUid="00000000000000000000000000000000" switchUid="00000000000000000000000000000000"/>
+            <Port portNumber="5" portUid="00000000000000000000000000000000" switchUid="00000000000000000000000000000000"/>
+            <Port portNumber="6" portUid="00000000000000000000000000000000" switchUid="00000000000000000000000000000000"/>
+            <Port portNumber="7" portUid="00000000000000000000000000000000" switchUid="00000000000000000000000000000000"/>
+        </ClariionSPConfig>
+        <ClariionSpStatus readCacheState="enabled" writeCacheState="enabled" state="operational" storage="1" id="A">
+            <Port portNumber="0" linkStatus="up" portStatus="on-line"/>
+            <Port portNumber="1" linkStatus="down" portStatus="disabled"/>
+            <Port portNumber="2" linkStatus="down" portStatus="disabled"/>
+            <Port portNumber="3" linkStatus="down" portStatus="disabled"/>
+            <Port portNumber="8" linkStatus="up" portStatus="on-line"/>
+            <Port portNumber="9" linkStatus="up" portStatus="on-line"/>
+            <Port portNumber="10" linkStatus="down" portStatus="disabled"/>
+            <Port portNumber="11" linkStatus="down" portStatus="disabled"/>
+            <Port portNumber="4" linkStatus="down" portStatus="on-line"/>
+            <Port portNumber="5" linkStatus="down" portStatus="on-line"/>
+            <Port portNumber="6" linkStatus="down" portStatus="on-line"/>
+            <Port portNumber="7" linkStatus="down" portStatus="on-line"/>
+        </ClariionSpStatus>
+        <ClariionSPConfig signature="3686616" microcodeRev="05.33.000.5.051" serialNumber="CF2BN140400216" promRev="7.20.00" agentRev="7.33.2 (0.51)" physicalMemorySize="16384" systemBufferSize="-1" readCacheSize="-1" writeCacheSize="-1" freeMemorySize="-1" raid3MemorySize="-1" storage="1" id="B">
+            <Port portNumber="4" portUid="00000000000000000000000000000000" switchUid="00000000000000000000000000000000"/>
+            <Port portNumber="5" portUid="00000000000000000000000000000000" switchUid="00000000000000000000000000000000"/>
+            <Port portNumber="6" portUid="00000000000000000000000000000000" switchUid="00000000000000000000000000000000"/>
+            <Port portNumber="7" portUid="00000000000000000000000000000000" switchUid="00000000000000000000000000000000"/>
+            <Port portNumber="0" portUid="50060160886025fc50060168086025fc" switchUid="00000000000000000000000000000000"/>
+            <Port portNumber="1" portUid="50060160886025fc50060169086025fc" switchUid="00000000000000000000000000000000"/>
+            <Port portNumber="2" portUid="50060160886025fc5006016a086025fc" switchUid="00000000000000000000000000000000"/>
+            <Port portNumber="3" portUid="50060160886025fc5006016b086025fc" switchUid="00000000000000000000000000000000"/>
+            <Port portNumber="8" portUid="50060160886025fc50060168086425fc" switchUid="00000000000000000000000000000000"/>
+            <Port portNumber="9" portUid="50060160886025fc50060169086425fc" switchUid="00000000000000000000000000000000"/>
+            <Port portNumber="10" portUid="50060160886025fc5006016a086425fc" switchUid="00000000000000000000000000000000"/>
+            <Port portNumber="11" portUid="50060160886025fc5006016b086425fc" switchUid="00000000000000000000000000000000"/>
+        </ClariionSPConfig>
+        <ClariionSpStatus readCacheState="enabled" writeCacheState="enabled" state="operational" storage="1" id="B">
+            <Port portNumber="4" linkStatus="down" portStatus="on-line"/>
+            <Port portNumber="5" linkStatus="down" portStatus="on-line"/>
+            <Port portNumber="6" linkStatus="down" portStatus="on-line"/>
+            <Port portNumber="7" linkStatus="down" portStatus="on-line"/>
+            <Port portNumber="0" linkStatus="up" portStatus="on-line"/>
+            <Port portNumber="1" linkStatus="down" portStatus="disabled"/>
+            <Port portNumber="2" linkStatus="down" portStatus="disabled"/>
+            <Port portNumber="3" linkStatus="down" portStatus="disabled"/>
+            <Port portNumber="8" linkStatus="up" portStatus="on-line"/>
+            <Port portNumber="9" linkStatus="up" portStatus="on-line"/>
+            <Port portNumber="10" linkStatus="down" portStatus="disabled"/>
+            <Port portNumber="11" linkStatus="down" portStatus="disabled"/>
+        </ClariionSpStatus>
+    </ResponseEx>
+</ResponsePacket>
+
+23:14:31,527 INFO  [main                     ] api.EMCApp                     -
+23:14:31,532 INFO  [main                     ] api.EMCApp                     -
+23:14:31,540 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\ControlStationQueryParams.xml ================
+23:14:31,547 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Request>
+        <Query>
+            <ControlStationQueryParams/>
+        </Query>
+    </Request>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Response>
+        <QueryStatus maxSeverity="ok"/>
+        <ControlStation type="controlStation" dnsServers="10.0.1.10 10.0.1.13" version="8.1.2-51 " hostname="EMC-Storage" address="10.0.1.77" netmask="255.255.255.0" gateway="10.0.1.1" dnsDomain="intergence.com" time="1396822591" timeZone="Europe/London" slot="0">
+            <Status maxSeverity="ok"/>
+        </ControlStation>
+    </Response>
+</ResponsePacket>
+
+23:14:32,879 INFO  [main                     ] api.EMCApp                     -
+23:14:32,886 INFO  [main                     ] api.EMCApp                     -
+23:14:32,892 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\DhsmConnectionQueryParam.xml ================
+23:14:32,899 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+    <RequestEx>
+        <Query>
+            <DhsmConnectionQueryParams>
+                <AspectSelection connectionConfig="true"></AspectSelection>
+            </DhsmConnectionQueryParams>
+        </Query>
+    </RequestEx>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+    <ResponseEx>
+        <QueryStatus maxSeverity="ok"/>
+    </ResponseEx>
+</ResponsePacket>
+
+23:14:33,802 INFO  [main                     ] api.EMCApp                     -
+23:14:33,808 INFO  [main                     ] api.EMCApp                     -
+23:14:33,815 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\EncodingConfigQueryParams.xml ================
+23:14:33,822 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+    <RequestEx>
+        <Query>
+            <EncodingConfigQueryParams></EncodingConfigQueryParams>
+        </Query>
+    </RequestEx>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+    <ResponseEx>
+        <QueryStatus maxSeverity="ok"/>
+        <EncodingConfig encoding="ISO-8859-1" comment=" Any thing that didn't match above will be assumed to be latin-1" priority="0"/>
+    </ResponseEx>
+</ResponsePacket>
+
+23:14:34,211 INFO  [main                     ] api.EMCApp                     -
+23:14:34,217 INFO  [main                     ] api.EMCApp                     -
+23:14:34,223 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\EncodingQueryParams.xml ================
+23:14:34,231 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+    <RequestEx>
+        <Query>
+            <EncodingQueryParams host="10.0.1.77">
+            </EncodingQueryParams>
+        </Query>
+    </RequestEx>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <PacketFault maxSeverity="error">
+        <Problem messageCode="14227341329" facility="Prevalidator" component="API" message="User request is not compliant with XML API schema." severity="error">
+            <Description>The user request is not compliant with the XML API Schema.</Description>
+            <Action>Refer to the XML API v2 schema/documentation and correct your user program logic.</Action>
+            <Diagnostics>
+Exception tag: 145391d4f58
+Exception message: cvc-complex-type.2.1: Element 'EncodingQueryParams' must have no character or element information item [children], because the type's content type is empty.
+</Diagnostics>
+        </Problem>
+    </PacketFault>
+</ResponsePacket>
+
+23:14:34,615 INFO  [main                     ] api.EMCApp                     -
+23:14:34,621 INFO  [main                     ] api.EMCApp                     -
+23:14:34,628 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\EventQueryParams.xml ================
+23:14:34,635 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_2">
+    <RequestEx>
+        <Query>
+            <EventQueryParams start="0" verbose="true"></EventQueryParams>
+        </Query>
+    </RequestEx>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_2">
+    <ResponseEx>
+        <Fault maxSeverity="error">
+            <Problem messageCode="14227341347" facility="Prevalidator" component="API" message="Either start or interval should be present and should be non zero" severity="error">
+                <Description>Either start or interval should be present and should be non zero</Description>
+                <Action></Action>
+                <Diagnostics>
+Exception tag: 145391d510a
+Exception message: com.emc.nas.ccmd.common.MessageInstanceImpl@50040023
+</Diagnostics>
+            </Problem>
+        </Fault>
+    </ResponseEx>
+</ResponsePacket>
+
+23:14:35,058 INFO  [main                     ] api.EMCApp                     -
+23:14:35,064 INFO  [main                     ] api.EMCApp                     -
+23:14:35,071 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\FileSystemLocationQueryParams.xml ================
+23:14:35,078 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+    <RequestEx>
+        <Query>
+            <FileSystemLocationQueryParams url="cifs://dhsm_dest_cifs.emcpune.com/dhsm_share"></FileSystemLocationQueryParams>
+            <FileSystemLocationQueryParams url="nfs://10.4.86.147/corefs54"></FileSystemLocationQueryParams>
+            <FileSystemLocationQueryParams url="nfs://10.4.86.147/dhsm_dest_fs"></FileSystemLocationQueryParams>
+        </Query>
+    </RequestEx>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+    <ResponseEx>
+        <QueryStatus maxSeverity="warning">
+            <Problem messageCode="18522439681" facility="FsUrlResolver" component="API" message="Specified url cifs://dhsm_dest_cifs.emcpune.com/dhsm_share could not be resolved." severity="warning">
+                <Description>The specified URL could not be resolved.</Description>
+                <Action>Correct your user program logic.</Action>
+                <Diagnostics>java.lang.Exception
+        at com.emc.celerra.api.apl.AplUtils.fillInBriefApiStatus(AplUtils.java:283)
+        at com.emc.celerra.api.apl.fs.FsQuery.queryCifs(FsQuery.java:169)
+        at com.emc.celerra.api.apl.fs.FsQuery.query(FsQuery.java:130)
+        at com.emc.celerra.api.apl.AplSession.query(AplSession.java:290)
+        at com.emc.celerra.api.Session.doQueryEx(Session.java:458)
+        at com.emc.celerra.api.Session.processRequest(Session.java:378)
+        at com.emc.celerra.api.RequestRunner.processUserPacket(RequestRunner.java:303)
+        at com.emc.celerra.api.RequestRunner.processOneRequest(RequestRunner.java:173)
+        at com.emc.celerra.api.RequestRunner.run(RequestRunner.java:94)
+        at org.concurrent.PooledExecutor$Worker.run(PooledExecutor.java:743)
+        at java.lang.Thread.run(Unknown Source)
+</Diagnostics>
+            </Problem>
+        </QueryStatus>
+        <QueryStatus maxSeverity="warning">
+            <Problem messageCode="18522439681" facility="FsUrlResolver" component="API" message="Specified url nfs://10.4.86.147/corefs54 could not be resolved." severity="warning">
+                <Description>The specified URL could not be resolved.</Description>
+                <Action>Correct your user program logic.</Action>
+                <Diagnostics>java.lang.Exception
+        at com.emc.celerra.api.apl.AplUtils.fillInBriefApiStatus(AplUtils.java:283)
+        at com.emc.celerra.api.apl.fs.FsQuery.queryNfs(FsQuery.java:260)
+        at com.emc.celerra.api.apl.fs.FsQuery.query(FsQuery.java:133)
+        at com.emc.celerra.api.apl.AplSession.query(AplSession.java:290)
+        at com.emc.celerra.api.Session.doQueryEx(Session.java:458)
+        at com.emc.celerra.api.Session.processRequest(Session.java:378)
+        at com.emc.celerra.api.RequestRunner.processUserPacket(RequestRunner.java:303)
+        at com.emc.celerra.api.RequestRunner.processOneRequest(RequestRunner.java:173)
+        at com.emc.celerra.api.RequestRunner.run(RequestRunner.java:94)
+        at org.concurrent.PooledExecutor$Worker.run(PooledExecutor.java:743)
+        at java.lang.Thread.run(Unknown Source)
+</Diagnostics>
+            </Problem>
+        </QueryStatus>
+        <QueryStatus maxSeverity="warning">
+            <Problem messageCode="18522439681" facility="FsUrlResolver" component="API" message="Specified url nfs://10.4.86.147/dhsm_dest_fs could not be resolved." severity="warning">
+                <Description>The specified URL could not be resolved.</Description>
+                <Action>Correct your user program logic.</Action>
+                <Diagnostics>java.lang.Exception
+        at com.emc.celerra.api.apl.AplUtils.fillInBriefApiStatus(AplUtils.java:283)
+        at com.emc.celerra.api.apl.fs.FsQuery.queryNfs(FsQuery.java:260)
+        at com.emc.celerra.api.apl.fs.FsQuery.query(FsQuery.java:133)
+        at com.emc.celerra.api.apl.AplSession.query(AplSession.java:290)
+        at com.emc.celerra.api.Session.doQueryEx(Session.java:458)
+        at com.emc.celerra.api.Session.processRequest(Session.java:378)
+        at com.emc.celerra.api.RequestRunner.processUserPacket(RequestRunner.java:303)
+        at com.emc.celerra.api.RequestRunner.processOneRequest(RequestRunner.java:173)
+        at com.emc.celerra.api.RequestRunner.run(RequestRunner.java:94)
+        at org.concurrent.PooledExecutor$Worker.run(PooledExecutor.java:743)
+        at java.lang.Thread.run(Unknown Source)
+</Diagnostics>
+            </Problem>
+        </QueryStatus>
+        <QueryStatus maxSeverity="warning">
+            <Problem messageCode="18522439681" facility="FsUrlResolver" component="API" message="Specified url cifs://dhsm_dest_cifs.emcpune.com/dhsm_share could not be resolved." severity="warning">
+                <Description>The specified URL could not be resolved.</Description>
+                <Action>Correct your user program logic.</Action>
+                <Diagnostics>java.lang.Exception
+        at com.emc.celerra.api.apl.AplUtils.fillInBriefApiStatus(AplUtils.java:283)
+        at com.emc.celerra.api.apl.fs.FsQuery.queryCifs(FsQuery.java:169)
+        at com.emc.celerra.api.apl.fs.FsQuery.query(FsQuery.java:130)
+        at com.emc.celerra.api.apl.AplSession.query(AplSession.java:290)
+        at com.emc.celerra.api.Session.doQueryEx(Session.java:458)
+        at com.emc.celerra.api.Session.processRequest(Session.java:378)
+        at com.emc.celerra.api.RequestRunner.processUserPacket(RequestRunner.java:303)
+        at com.emc.celerra.api.RequestRunner.processOneRequest(RequestRunner.java:173)
+        at com.emc.celerra.api.RequestRunner.run(RequestRunner.java:94)
+        at org.concurrent.PooledExecutor$Worker.run(PooledExecutor.java:743)
+        at java.lang.Thread.run(Unknown Source)
+</Diagnostics>
+            </Problem>
+        </QueryStatus>
+        <QueryStatus maxSeverity="warning">
+            <Problem messageCode="18522439681" facility="FsUrlResolver" component="API" message="Specified url nfs://10.4.86.147/corefs54 could not be resolved." severity="warning">
+                <Description>The specified URL could not be resolved.</Description>
+                <Action>Correct your user program logic.</Action>
+                <Diagnostics>java.lang.Exception
+        at com.emc.celerra.api.apl.AplUtils.fillInBriefApiStatus(AplUtils.java:283)
+        at com.emc.celerra.api.apl.fs.FsQuery.queryNfs(FsQuery.java:260)
+        at com.emc.celerra.api.apl.fs.FsQuery.query(FsQuery.java:133)
+        at com.emc.celerra.api.apl.AplSession.query(AplSession.java:290)
+        at com.emc.celerra.api.Session.doQueryEx(Session.java:458)
+        at com.emc.celerra.api.Session.processRequest(Session.java:378)
+        at com.emc.celerra.api.RequestRunner.processUserPacket(RequestRunner.java:303)
+        at com.emc.celerra.api.RequestRunner.processOneRequest(RequestRunner.java:173)
+        at com.emc.celerra.api.RequestRunner.run(RequestRunner.java:94)
+        at org.concurrent.PooledExecutor$Worker.run(PooledExecutor.java:743)
+        at java.lang.Thread.run(Unknown Source)
+</Diagnostics>
+            </Problem>
+        </QueryStatus>
+        <QueryStatus maxSeverity="warning">
+            <Problem messageCode="18522439681" facility="FsUrlResolver" component="API" message="Specified url nfs://10.4.86.147/dhsm_dest_fs could not be resolved." severity="warning">
+                <Description>The specified URL could not be resolved.</Description>
+                <Action>Correct your user program logic.</Action>
+                <Diagnostics>java.lang.Exception
+        at com.emc.celerra.api.apl.AplUtils.fillInBriefApiStatus(AplUtils.java:283)
+        at com.emc.celerra.api.apl.fs.FsQuery.queryNfs(FsQuery.java:260)
+        at com.emc.celerra.api.apl.fs.FsQuery.query(FsQuery.java:133)
+        at com.emc.celerra.api.apl.AplSession.query(AplSession.java:290)
+        at com.emc.celerra.api.Session.doQueryEx(Session.java:458)
+        at com.emc.celerra.api.Session.processRequest(Session.java:378)
+        at com.emc.celerra.api.RequestRunner.processUserPacket(RequestRunner.java:303)
+        at com.emc.celerra.api.RequestRunner.processOneRequest(RequestRunner.java:173)
+        at com.emc.celerra.api.RequestRunner.run(RequestRunner.java:94)
+        at org.concurrent.PooledExecutor$Worker.run(PooledExecutor.java:743)
+        at java.lang.Thread.run(Unknown Source)
+</Diagnostics>
+            </Problem>
+        </QueryStatus>
+        <QueryStatus maxSeverity="warning">
+            <Problem messageCode="18522439681" facility="FsUrlResolver" component="API" message="Specified url cifs://dhsm_dest_cifs.emcpune.com/dhsm_share could not be resolved." severity="warning">
+                <Description>The specified URL could not be resolved.</Description>
+                <Action>Correct your user program logic.</Action>
+                <Diagnostics>java.lang.Exception
+        at com.emc.celerra.api.apl.AplUtils.fillInBriefApiStatus(AplUtils.java:283)
+        at com.emc.celerra.api.apl.fs.FsQuery.queryCifs(FsQuery.java:169)
+        at com.emc.celerra.api.apl.fs.FsQuery.query(FsQuery.java:130)
+        at com.emc.celerra.api.apl.AplSession.query(AplSession.java:290)
+        at com.emc.celerra.api.Session.doQueryEx(Session.java:458)
+        at com.emc.celerra.api.Session.processRequest(Session.java:378)
+        at com.emc.celerra.api.RequestRunner.processUserPacket(RequestRunner.java:303)
+        at com.emc.celerra.api.RequestRunner.processOneRequest(RequestRunner.java:173)
+        at com.emc.celerra.api.RequestRunner.run(RequestRunner.java:94)
+        at org.concurrent.PooledExecutor$Worker.run(PooledExecutor.java:743)
+        at java.lang.Thread.run(Unknown Source)
+</Diagnostics>
+            </Problem>
+        </QueryStatus>
+        <QueryStatus maxSeverity="warning">
+            <Problem messageCode="18522439681" facility="FsUrlResolver" component="API" message="Specified url nfs://10.4.86.147/corefs54 could not be resolved." severity="warning">
+                <Description>The specified URL could not be resolved.</Description>
+                <Action>Correct your user program logic.</Action>
+                <Diagnostics>java.lang.Exception
+        at com.emc.celerra.api.apl.AplUtils.fillInBriefApiStatus(AplUtils.java:283)
+        at com.emc.celerra.api.apl.fs.FsQuery.queryNfs(FsQuery.java:260)
+        at com.emc.celerra.api.apl.fs.FsQuery.query(FsQuery.java:133)
+        at com.emc.celerra.api.apl.AplSession.query(AplSession.java:290)
+        at com.emc.celerra.api.Session.doQueryEx(Session.java:458)
+        at com.emc.celerra.api.Session.processRequest(Session.java:378)
+        at com.emc.celerra.api.RequestRunner.processUserPacket(RequestRunner.java:303)
+        at com.emc.celerra.api.RequestRunner.processOneRequest(RequestRunner.java:173)
+        at com.emc.celerra.api.RequestRunner.run(RequestRunner.java:94)
+        at org.concurrent.PooledExecutor$Worker.run(PooledExecutor.java:743)
+        at java.lang.Thread.run(Unknown Source)
+</Diagnostics>
+            </Problem>
+        </QueryStatus>
+        <QueryStatus maxSeverity="warning">
+            <Problem messageCode="18522439681" facility="FsUrlResolver" component="API" message="Specified url nfs://10.4.86.147/dhsm_dest_fs could not be resolved." severity="warning">
+                <Description>The specified URL could not be resolved.</Description>
+                <Action>Correct your user program logic.</Action>
+                <Diagnostics>java.lang.Exception
+        at com.emc.celerra.api.apl.AplUtils.fillInBriefApiStatus(AplUtils.java:283)
+        at com.emc.celerra.api.apl.fs.FsQuery.queryNfs(FsQuery.java:260)
+        at com.emc.celerra.api.apl.fs.FsQuery.query(FsQuery.java:133)
+        at com.emc.celerra.api.apl.AplSession.query(AplSession.java:290)
+        at com.emc.celerra.api.Session.doQueryEx(Session.java:458)
+        at com.emc.celerra.api.Session.processRequest(Session.java:378)
+        at com.emc.celerra.api.RequestRunner.processUserPacket(RequestRunner.java:303)
+        at com.emc.celerra.api.RequestRunner.processOneRequest(RequestRunner.java:173)
+        at com.emc.celerra.api.RequestRunner.run(RequestRunner.java:94)
+        at org.concurrent.PooledExecutor$Worker.run(PooledExecutor.java:743)
+        at java.lang.Thread.run(Unknown Source)
+</Diagnostics>
+            </Problem>
+        </QueryStatus>
+    </ResponseEx>
+</ResponsePacket>
+
+23:14:42,403 INFO  [main                     ] api.EMCApp                     -
+23:14:42,410 INFO  [main                     ] api.EMCApp                     -
+23:14:42,417 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\FileSystemQueryParams.xml ================
+23:14:42,425 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api" >
+    <Request>
+        <Query>
+            <FileSystemQueryParams>
+                <AspectSelection fileSystems="true"
+                                 fileSystemCapacityInfos="true"
+                                 fileSystemCheckpointInfos="true"
+                                 fileSystemCapabilities="true" />
+            </FileSystemQueryParams>
+        </Query>
+    </Request>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Response>
+        <QueryStatus maxSeverity="ok"/>
+        <FileSystem name="root_fs_1" type="uxfs" volume="10" storages="1" containsSlices="true" internalUse="true" virtualProvisioning="false" fileSystem="1">
+            <ProductionFileSystemData cwormState="off"/>
+        </FileSystem>
+        <FileSystemCapabilities fileSystem="1">
+            <DiskVolumeBased validStorages="1" recommendedStorage="1"/>
+        </FileSystemCapabilities>
+        <FileSystemCapacityInfo volumeSize="16" fileSystem="1"/>
+        <FileSystem name="root_fs_common" type="uxfs" volume="40" storages="1" containsSlices="true" internalUse="true" virtualProvisioning="false" fileSystem="2">
+            <RoFileSystemHosts mover="1" moverIdIsVdm="false"/>
+            <RoFileSystemHosts mover="2" moverIdIsVdm="false"/>
+            <ProductionFileSystemData cwormState="off"/>
+        </FileSystem>
+        <FileSystemCapabilities fileSystem="2">
+            <DiskVolumeBased validStorages="1" recommendedStorage="1"/>
+        </FileSystemCapabilities>
+        <FileSystemCapacityInfo volumeSize="16" fileSystem="2">
+            <ResourceUsage spaceTotal="15" spaceUsed="5" filesTotal="7870" filesUsed="27"/>
+        </FileSystemCapacityInfo>
+        <FileSystem name="root_fs_ufslog" type="rawfs" volume="73" storages="1" containsSlices="true" internalUse="true" virtualProvisioning="false" fileSystem="3"/>
+        <FileSystemCapabilities fileSystem="3">
+            <DiskVolumeBased validStorages="1" recommendedStorage="1"/>
+        </FileSystemCapabilities>
+        <FileSystemCapacityInfo volumeSize="1024" fileSystem="3"/>
+        <FileSystem name="root_panic_reserve" type="rawfs" volume="76" storages="1" containsSlices="true" internalUse="true" virtualProvisioning="false" fileSystem="4"/>
+        <FileSystemCapabilities fileSystem="4">
+            <DiskVolumeBased validStorages="1" recommendedStorage="1"/>
+        </FileSystemCapabilities>
+        <FileSystemCapacityInfo volumeSize="22063" fileSystem="4"/>
+        <FileSystem name="root_fs_d3" type="rawfs" volume="93" storages="1" containsSlices="false" internalUse="true" virtualProvisioning="false" fileSystem="5"/>
+        <FileSystemCapabilities fileSystem="5">
+            <DiskVolumeBased validStorages="1" recommendedStorage="1"/>
+        </FileSystemCapabilities>
+        <FileSystemCapacityInfo volumeSize="2047" fileSystem="5"/>
+        <FileSystem name="root_fs_d4" type="rawfs" volume="94" storages="1" containsSlices="false" internalUse="true" virtualProvisioning="false" fileSystem="6"/>
+        <FileSystemCapabilities fileSystem="6">
+            <DiskVolumeBased validStorages="1" recommendedStorage="1"/>
+        </FileSystemCapabilities>
+        <FileSystemCapacityInfo volumeSize="2047" fileSystem="6"/>
+        <FileSystem name="root_fs_d5" type="rawfs" volume="95" storages="1" containsSlices="false" internalUse="true" virtualProvisioning="false" fileSystem="7"/>
+        <FileSystemCapabilities fileSystem="7">
+            <DiskVolumeBased validStorages="1" recommendedStorage="1"/>
+        </FileSystemCapabilities>
+        <FileSystemCapacityInfo volumeSize="4095" fileSystem="7"/>
+        <FileSystem name="root_fs_d6" type="rawfs" volume="96" storages="1" containsSlices="false" internalUse="true" virtualProvisioning="false" fileSystem="8"/>
+        <FileSystemCapabilities fileSystem="8">
+            <DiskVolumeBased validStorages="1" recommendedStorage="1"/>
+        </FileSystemCapabilities>
+        <FileSystemCapacityInfo volumeSize="65535" fileSystem="8"/>
+        <FileSystem name="root_fs_2" type="uxfs" volume="12" storages="1" containsSlices="true" internalUse="true" virtualProvisioning="false" fileSystem="9">
+            <RwFileSystemHosts mover="1" moverIdIsVdm="false"/>
+            <ProductionFileSystemData cwormState="off"/>
+        </FileSystem>
+        <FileSystemCapabilities fileSystem="9">
+            <DiskVolumeBased validStorages="1" recommendedStorage="1"/>
+        </FileSystemCapabilities>
+        <FileSystemCapacityInfo volumeSize="256" fileSystem="9">
+            <ResourceUsage spaceTotal="252" spaceUsed="6" filesTotal="31486" filesUsed="117"/>
+        </FileSystemCapacityInfo>
+        <FileSystem name="root_fs_3" type="uxfs" volume="14" storages="1" containsSlices="true" internalUse="true" virtualProvisioning="false" fileSystem="10">
+            <RwFileSystemHosts mover="2" moverIdIsVdm="false"/>
+            <ProductionFileSystemData cwormState="off"/>
+        </FileSystem>
+        <FileSystemCapabilities fileSystem="10">
+            <DiskVolumeBased validStorages="1" recommendedStorage="1"/>
+        </FileSystemCapabilities>
+        <FileSystemCapacityInfo volumeSize="256" fileSystem="10"/>
+    </Response>
+</ResponsePacket>
+
+23:14:45,108 INFO  [main                     ] api.EMCApp                     -
+23:14:45,115 INFO  [main                     ] api.EMCApp                     -
+23:14:45,121 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\IscsiLunQueryParams.xml ================
+23:14:45,129 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+    <RequestEx clientHandle="abc"><!--Set the clientHandle param to machine name or IP-->
+        <Query>
+            <IscsiLunQueryParams>
+            </IscsiLunQueryParams>
+        </Query>
+    </RequestEx>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <PacketFault maxSeverity="error">
+        <Problem messageCode="14227341329" facility="Prevalidator" component="API" message="User request is not compliant with XML API schema." severity="error">
+            <Description>The user request is not compliant with the XML API Schema.</Description>
+            <Action>Refer to the XML API v2 schema/documentation and correct your user program logic.</Action>
+            <Diagnostics>
+Exception tag: 145391d79ee
+Exception message: cvc-complex-type.2.1: Element 'IscsiLunQueryParams' must have no character or element information item [children], because the type's content type is empty.
+</Diagnostics>
+        </Problem>
+    </PacketFault>
+</ResponsePacket>
+
+23:14:45,514 INFO  [main                     ] api.EMCApp                     -
+23:14:45,520 INFO  [main                     ] api.EMCApp                     -
+23:14:45,529 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\IscsiMaskQueryParams.xml ================
+23:14:45,536 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+    <RequestEx clientHandle="abc"><!--Set the clientHandle param to machine name or IP-->
+        <Query><!-- Set mover id, target, determine using CLI -->
+            <IscsiMaskQueryParams target="iqn.1992-05.com.emc:0002806001360000-4" mover="1">
+            </IscsiMaskQueryParams>
+        </Query>
+    </RequestEx>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <PacketFault maxSeverity="error">
+        <Problem messageCode="14227341329" facility="Prevalidator" component="API" message="User request is not compliant with XML API schema." severity="error">
+            <Description>The user request is not compliant with the XML API Schema.</Description>
+            <Action>Refer to the XML API v2 schema/documentation and correct your user program logic.</Action>
+            <Diagnostics>
+Exception tag: 145391d7bae
+Exception message: cvc-complex-type.2.1: Element 'IscsiMaskQueryParams' must have no character or element information item [children], because the type's content type is empty.
+</Diagnostics>
+        </Problem>
+    </PacketFault>
+</ResponsePacket>
+
+23:14:45,960 INFO  [main                     ] api.EMCApp                     -
+23:14:45,966 INFO  [main                     ] api.EMCApp                     -
+23:14:45,973 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\IscsiServiceQueryParams.xml ================
+23:14:45,980 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+    <RequestEx clientHandle="abc"><!--Set the clientHandle param to machine name or IP-->
+        <Query>
+            <IscsiServiceQueryParams><!-- also test by setting isnsConfig in AspectSelection and by both -->
+                <AspectSelection isnsConfig="true" iscsiState="true">
+                </AspectSelection>
+            </IscsiServiceQueryParams>
+        </Query>
+    </RequestEx>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <PacketFault maxSeverity="error">
+        <Problem messageCode="14227341329" facility="Prevalidator" component="API" message="User request is not compliant with XML API schema." severity="error">
+            <Description>The user request is not compliant with the XML API Schema.</Description>
+            <Action>Refer to the XML API v2 schema/documentation and correct your user program logic.</Action>
+            <Diagnostics>
+Exception tag: 145391d7d77
+Exception message: cvc-complex-type.2.1: Element 'AspectSelection' must have no character or element information item [children], because the type's content type is empty.
+</Diagnostics>
+        </Problem>
+    </PacketFault>
+</ResponsePacket>
+
+23:14:46,417 INFO  [main                     ] api.EMCApp                     -
+23:14:46,423 INFO  [main                     ] api.EMCApp                     -
+23:14:46,430 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\IscsiSharedSecretQueryParams.xml ================
+23:14:46,437 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+    <RequestEx clientHandle="abc"><!--Set the clientHandle param to machine name or IP-->
+        <Query>
+            <IscsiSharedSecretQueryParams>
+            </IscsiSharedSecretQueryParams>
+        </Query>
+    </RequestEx>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <PacketFault maxSeverity="error">
+        <Problem messageCode="14227341329" facility="Prevalidator" component="API" message="User request is not compliant with XML API schema." severity="error">
+            <Description>The user request is not compliant with the XML API Schema.</Description>
+            <Action>Refer to the XML API v2 schema/documentation and correct your user program logic.</Action>
+            <Diagnostics>
+Exception tag: 145391d7f2f
+Exception message: cvc-complex-type.2.1: Element 'IscsiSharedSecretQueryParams' must have no character or element information item [children], because the type's content type is empty.
+</Diagnostics>
+        </Problem>
+    </PacketFault>
+</ResponsePacket>
+
+23:14:46,854 INFO  [main                     ] api.EMCApp                     -
+23:14:46,860 INFO  [main                     ] api.EMCApp                     -
+23:14:46,867 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\IscsiTargetQueryParams.xml ================
+23:14:46,875 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+    <RequestEx clientHandle="abc"><!--Set the clientHandle param to machine name or IP-->
+        <Query>
+            <IscsiTargetQueryParams><!-- also test by setting initiators in AspectSelection and not attribute in AspectSelection-->
+                <AspectSelection targets="true" >
+                </AspectSelection>
+            </IscsiTargetQueryParams>
+        </Query>
+    </RequestEx>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <PacketFault maxSeverity="error">
+        <Problem messageCode="14227341329" facility="Prevalidator" component="API" message="User request is not compliant with XML API schema." severity="error">
+            <Description>The user request is not compliant with the XML API Schema.</Description>
+            <Action>Refer to the XML API v2 schema/documentation and correct your user program logic.</Action>
+            <Diagnostics>
+Exception tag: 145391d80f5
+Exception message: cvc-complex-type.2.1: Element 'AspectSelection' must have no character or element information item [children], because the type's content type is empty.
+</Diagnostics>
+        </Problem>
+    </PacketFault>
+</ResponsePacket>
+
+23:14:47,299 INFO  [main                     ] api.EMCApp                     -
+23:14:47,305 INFO  [main                     ] api.EMCApp                     -
+23:14:47,312 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\MountQueryParams.xml ================
+23:14:47,319 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Request>
+        <Query>
+            <MountQueryParams>
+                <MoverOrVdm mover="3" moverIdIsVdm="false"/>
+            </MountQueryParams>
+        </Query>
+    </Request>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Response>
+        <Fault maxSeverity="error">
+            <Problem messageCode="14227341323" facility="Prevalidator" component="API" message="Mover with id=3 not found." severity="error">
+                <Description>The mover ID supplied in the request is invalid.</Description>
+                <Action>Refer to the XML API v2 schema/documentation and correct your user program logic.</Action>
+                <Diagnostics>
+Exception tag: 145391d82db
+Exception message: com.emc.nas.ccmd.common.MessageInstanceImpl@5004000b
+</Diagnostics>
+            </Problem>
+        </Fault>
+    </Response>
+</ResponsePacket>
+
+23:14:47,799 INFO  [main                     ] api.EMCApp                     -
+23:14:47,805 INFO  [main                     ] api.EMCApp                     -
+23:14:47,811 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\MoverHostQueryParams.xml ================
+23:14:47,819 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api"
+               xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+               xsi:schemaLocation='http://www.emc.com/schemas/celerra/xml_api file:///C:/PROJECTS/BURG1/API_SCHEMA/xsd/APISchema.xsd'>
+    <Request>
+        <Query>
+            <MoverHostQueryParams>
+                <AspectSelection moverHosts="true" moverMotherboards="true" physicalDevices="true" fibreChannelConnections="true"/>
+            </MoverHostQueryParams>
+        </Query>
+    </Request>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Response>
+        <QueryStatus maxSeverity="ok"/>
+        <MoverHost mover="1" slot="2" moverHost="1">
+            <Status maxSeverity="ok"/>
+        </MoverHost>
+        <MoverMotherboard boardType="CMB-Argonaut" cpuType="Intel Four Core Westmere" cpuSpeed="2133" busSpeed="4800" memorySize="6144" moverHost="1"/>
+        <PhysicalDevice type="fc" description="PMC QE8" portNumber="0" irq="20" moverHost="1" name="fcp-0-0">
+            <FibreChannelDeviceData portWWN="5006016047603e6a"/>
+        </PhysicalDevice>
+        <PhysicalDevice type="fc" description="PMC QE8" portNumber="0" irq="21" moverHost="1" name="fcp-0-1">
+            <FibreChannelDeviceData portWWN="5006016147603e6a"/>
+        </PhysicalDevice>
+        <PhysicalDevice type="fc" description="PMC QE8" portNumber="0" irq="22" moverHost="1" name="fcp-0-2">
+            <FibreChannelDeviceData portWWN="5006016247603e6a"/>
+        </PhysicalDevice>
+        <PhysicalDevice type="fc" description="PMC QE8" portNumber="0" irq="23" moverHost="1" name="fcp-0-3">
+            <FibreChannelDeviceData portWWN="5006016347603e6a"/>
+        </PhysicalDevice>
+        <PhysicalDevice type="ethernet" description="Broadcom Gigabit" portNumber="0" irq="24" moverHost="1" name="cge-1-0">
+            <NetworkDeviceData allowedSpeeds="FD1000 FD100 HD100 FD10 HD10 auto"/>
+        </PhysicalDevice>
+        <PhysicalDevice type="ethernet" description="Broadcom Gigabit" portNumber="0" irq="25" moverHost="1" name="cge-1-1">
+            <NetworkDeviceData allowedSpeeds="FD1000 FD100 HD100 FD10 HD10 auto"/>
+        </PhysicalDevice>
+        <PhysicalDevice type="ethernet" description="Broadcom Gigabit" portNumber="0" irq="26" moverHost="1" name="cge-1-2">
+            <NetworkDeviceData allowedSpeeds="FD1000 FD100 HD100 FD10 HD10 auto"/>
+        </PhysicalDevice>
+        <PhysicalDevice type="ethernet" description="Broadcom Gigabit" portNumber="0" irq="27" moverHost="1" name="cge-1-3">
+            <NetworkDeviceData allowedSpeeds="FD1000 FD100 HD100 FD10 HD10 auto"/>
+        </PhysicalDevice>
+        <PhysicalDevice type="other" description="PLX PCI-Express Switch" portNumber="1" irq="10" moverHost="1" name="PLX PEX8648"/>
+        <FcDescriptor moverHost="1">
+            <FcConnectionSet portWWN="5006016047603e6a">
+                <StorageEndpoint portWWN="50060160086425fc" storage="1" directorType="SP" directorNumber="0" port="0"/>
+                <ScsiRange scsiChainStart="0" scsiNumChains="16"/>
+            </FcConnectionSet>
+            <FcConnectionSet portWWN="5006016147603e6a">
+                <StorageEndpoint portWWN="50060168086425fc" storage="1" directorType="SP" directorNumber="1" port="0"/>
+                <ScsiRange scsiChainStart="16" scsiNumChains="16"/>
+            </FcConnectionSet>
+            <FcConnectionSet portWWN="5006016247603e6a">
+                <ScsiRange scsiChainStart="32" scsiNumChains="16"/>
+            </FcConnectionSet>
+            <FcConnectionSet portWWN="5006016347603e6a">
+                <ScsiRange scsiChainStart="48" scsiNumChains="16"/>
+            </FcConnectionSet>
+        </FcDescriptor>
+        <MoverHost mover="2" slot="3" moverHost="2">
+            <Status maxSeverity="ok"/>
+        </MoverHost>
+        <MoverMotherboard boardType="CMB-Argonaut" cpuType="Intel Four Core Westmere" cpuSpeed="2133" busSpeed="4800" memorySize="6144" moverHost="2"/>
+        <PhysicalDevice type="fc" description="PMC QE8" portNumber="0" irq="20" moverHost="2" name="fcp-0-0">
+            <FibreChannelDeviceData portWWN="5006016847603e6a"/>
+        </PhysicalDevice>
+        <PhysicalDevice type="fc" description="PMC QE8" portNumber="0" irq="21" moverHost="2" name="fcp-0-1">
+            <FibreChannelDeviceData portWWN="5006016947603e6a"/>
+        </PhysicalDevice>
+        <PhysicalDevice type="fc" description="PMC QE8" portNumber="0" irq="22" moverHost="2" name="fcp-0-2">
+            <FibreChannelDeviceData portWWN="5006016a47603e6a"/>
+        </PhysicalDevice>
+        <PhysicalDevice type="fc" description="PMC QE8" portNumber="0" irq="23" moverHost="2" name="fcp-0-3">
+            <FibreChannelDeviceData portWWN="5006016b47603e6a"/>
+        </PhysicalDevice>
+        <PhysicalDevice type="ethernet" description="Broadcom Gigabit" portNumber="0" irq="24" moverHost="2" name="cge-1-0">
+            <NetworkDeviceData allowedSpeeds="FD1000 FD100 HD100 FD10 HD10 auto"/>
+        </PhysicalDevice>
+        <PhysicalDevice type="ethernet" description="Broadcom Gigabit" portNumber="0" irq="25" moverHost="2" name="cge-1-1">
+            <NetworkDeviceData allowedSpeeds="FD1000 FD100 HD100 FD10 HD10 auto"/>
+        </PhysicalDevice>
+        <PhysicalDevice type="ethernet" description="Broadcom Gigabit" portNumber="0" irq="26" moverHost="2" name="cge-1-2">
+            <NetworkDeviceData allowedSpeeds="FD1000 FD100 HD100 FD10 HD10 auto"/>
+        </PhysicalDevice>
+        <PhysicalDevice type="ethernet" description="Broadcom Gigabit" portNumber="0" irq="27" moverHost="2" name="cge-1-3">
+            <NetworkDeviceData allowedSpeeds="FD1000 FD100 HD100 FD10 HD10 auto"/>
+        </PhysicalDevice>
+        <PhysicalDevice type="other" description="PLX PCI-Express Switch" portNumber="1" irq="10" moverHost="2" name="PLX PEX8648"/>
+        <FcDescriptor moverHost="2">
+            <FcConnectionSet portWWN="5006016847603e6a">
+                <StorageEndpoint portWWN="50060161086425fc" storage="1" directorType="SP" directorNumber="0" port="0"/>
+                <ScsiRange scsiChainStart="0" scsiNumChains="16"/>
+            </FcConnectionSet>
+            <FcConnectionSet portWWN="5006016947603e6a">
+                <StorageEndpoint portWWN="50060169086425fc" storage="1" directorType="SP" directorNumber="1" port="0"/>
+                <ScsiRange scsiChainStart="16" scsiNumChains="16"/>
+            </FcConnectionSet>
+            <FcConnectionSet portWWN="5006016a47603e6a">
+                <ScsiRange scsiChainStart="32" scsiNumChains="16"/>
+            </FcConnectionSet>
+            <FcConnectionSet portWWN="5006016b47603e6a">
+                <ScsiRange scsiChainStart="48" scsiNumChains="16"/>
+            </FcConnectionSet>
+        </FcDescriptor>
+    </Response>
+</ResponsePacket>
+
+23:14:53,588 INFO  [main                     ] api.EMCApp                     -
+23:14:53,594 INFO  [main                     ] api.EMCApp                     -
+23:14:53,602 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\MoverHttpFeatureQueryParams.xml ================
+23:14:53,610 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+    <RequestEx>
+        <Query>
+            <MoverHttpFeatureQueryParams feature="dhsm" mover="1">
+            </MoverHttpFeatureQueryParams>
+        </Query>
+    </RequestEx>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <PacketFault maxSeverity="error">
+        <Problem messageCode="14227341329" facility="Prevalidator" component="API" message="User request is not compliant with XML API schema." severity="error">
+            <Description>The user request is not compliant with the XML API Schema.</Description>
+            <Action>Refer to the XML API v2 schema/documentation and correct your user program logic.</Action>
+            <Diagnostics>
+Exception tag: 145391d9b12
+Exception message: cvc-complex-type.2.1: Element 'MoverHttpFeatureQueryParams' must have no character or element information item [children], because the type's content type is empty.
+</Diagnostics>
+        </Problem>
+    </PacketFault>
+</ResponsePacket>
+
+23:14:53,989 INFO  [main                     ] api.EMCApp                     -
+23:14:53,994 INFO  [main                     ] api.EMCApp                     -
+23:14:54,002 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\MoverQueryParams.xml ================
+23:14:54,009 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Request>
+        <Query>
+            <MoverQueryParams mover="2" >
+                <AspectSelection movers="true" moverDnsDomains="true"
+                                 moverInterfaces="true"
+                                 moverNetworkDevices="true" moverNisDomains="true"
+                                 moverRoutes="true"
+                                 moverStatuses="true" />
+            </MoverQueryParams>
+        </Query>
+    </Request>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Response>
+        <QueryStatus maxSeverity="ok"/>
+        <Mover name="server_3" host="2" role="standby" standbyFors="1" i18NMode="ASCII" failoverPolicy="none" mover="2"/>
+        <MoverStatus version="T8.1.2.51" csTime="1396822613" clock="1396819142" timezone="GMT" uptime="475612" mover="2">
+            <Status maxSeverity="ok"/>
+        </MoverStatus>
+        <MoverInterface name="el30" device="mge0" ipVersion="IPv4" netMask="255.255.255.0" broadcastAddr="128.221.252.255" macAddr="0:60:16:5f:96:70" mtu="1500" up="true" vlanid="0" mover="2" ipAddress="128.221.252.3"/>
+        <MoverInterface name="el31" device="mge1" ipVersion="IPv4" netMask="255.255.255.0" broadcastAddr="128.221.253.255" macAddr="0:60:16:5f:96:71" mtu="1500" up="true" vlanid="0" mover="2" ipAddress="128.221.253.3"/>
+        <MoverRoute destination="128.221.253.0" interface="128.221.253.3" ipVersion="IPv4" netMask="255.255.255.0" gateway="128.221.253.3" mover="2"/>
+        <MoverRoute destination="128.221.252.0" interface="128.221.252.3" ipVersion="IPv4" netMask="255.255.255.0" gateway="128.221.252.3" mover="2"/>
+        <MoverRoute destination="127.0.0.1" interface="127.0.0.1" ipVersion="IPv4" netMask="255.255.255.255" gateway="127.0.0.1" mover="2"/>
+        <LogicalNetworkDevice speed="auto" type="physical-ethernet" mover="2" name="cge-1-0"/>
+        <LogicalNetworkDevice speed="auto" type="physical-ethernet" mover="2" name="cge-1-1"/>
+        <LogicalNetworkDevice speed="auto" type="physical-ethernet" mover="2" name="cge-1-2"/>
+        <LogicalNetworkDevice speed="auto" type="physical-ethernet" mover="2" name="cge-1-3"/>
+    </Response>
+</ResponsePacket>
+
+23:14:57,960 INFO  [main                     ] api.EMCApp                     -
+23:14:57,967 INFO  [main                     ] api.EMCApp                     -
+23:14:57,973 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\NfsExportQueryParams.xml ================
+23:14:57,980 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Request>
+        <Query>
+            <NfsExportQueryParams path="/server3fs5"/>
+        </Query>
+    </Request>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Response>
+        <QueryStatus maxSeverity="ok"/>
+    </Response>
+</ResponsePacket>
+
+23:14:58,693 INFO  [main                     ] api.EMCApp                     -
+23:14:58,699 INFO  [main                     ] api.EMCApp                     -
+23:14:58,705 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\SnmpServiceQueryParams.xml ================
+23:14:58,712 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+<Request>
+<Query>
+    <SnmpServiceQueryParams mover= �ǣ1��?/>
+</Query>
+</Request>
+        </RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <PacketFault maxSeverity="error">
+        <Problem messageCode="14227341329" facility="Prevalidator" component="API" message="User request is not compliant with XML API schema." severity="error">
+            <Description>The user request is not compliant with the XML API Schema.</Description>
+            <Action>Refer to the XML API v2 schema/documentation and correct your user program logic.</Action>
+            <Diagnostics>
+Exception tag: 145391daf13
+Exception message: Open quote is expected for attribute &quot;{1}&quot; associated with an  element type  &quot;mover&quot;.
+</Diagnostics>
+        </Problem>
+    </PacketFault>
+</ResponsePacket>
+
+23:14:59,101 INFO  [main                     ] api.EMCApp                     -
+23:14:59,106 INFO  [main                     ] api.EMCApp                     -
+23:14:59,113 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\StoragePoolQueryParams.xml ================
+23:14:59,120 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Request>
+        <Query>
+            <StoragePoolQueryParams/>
+        </Query>
+    </Request>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Response>
+        <QueryStatus maxSeverity="ok"/>
+    </Response>
+</ResponsePacket>
+
+23:15:00,133 INFO  [main                     ] api.EMCApp                     -
+23:15:00,139 INFO  [main                     ] api.EMCApp                     -
+23:15:00,146 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\StorageSystemQueryParams.xml ================
+23:15:00,153 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Request>
+        <Query>
+            <StorageSystemQueryParams/>
+        </Query>
+    </Request>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Response>
+        <QueryStatus maxSeverity="ok"/>
+        <StorageSystem type="storageSystem" serial="CKM00140700163" name="CKM00140700163" diskCount="12" cacheSize="0" storage="1">
+            <Status maxSeverity="ok"/>
+            <ClariionSystemData model="VNX5200" softwareVersion="05.33.000.5.051,7.33.2 (0.51)"/>
+        </StorageSystem>
+    </Response>
+</ResponsePacket>
+
+23:15:03,040 INFO  [main                     ] api.EMCApp                     -
+23:15:03,047 INFO  [main                     ] api.EMCApp                     -
+23:15:03,055 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\SubscribeStats.xml ================
+23:15:03,063 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api" >
+    <Request clientHandle='abcdef'>
+        <Subscribe>
+            <MoverStats statsSet='NFS-RPC' mover="1"/>
+            <MoverStats statsSet='CIFS-Totals' mover="1"/>
+            <MoverStats statsSet='Network-TCP' mover="1"/>
+            <MoverStats statsSet='ResourceUsage' mover="1"/>
+            <VolumeStats statsSet='Totals' mover="2"/>
+            <FileSystemUsage fileSystem="30" />
+        </Subscribe>
+    </Request>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Response clientHandle="abcdef"/>
+</ResponsePacket>
+
+23:15:03,419 INFO  [main                     ] api.EMCApp                     -
+23:15:03,426 INFO  [main                     ] api.EMCApp                     -
+23:15:03,433 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\SubscribeStats1.xml ================
+23:15:03,440 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api" >
+    <Request clientHandle='abcdef'>
+        <Subscribe>
+            <VolumeStats statsSet='Totals' mover="1"/>
+            <VolumeStats statsSet='Totals' mover="2"/>
+            <VolumeStats statsSet='Totals' mover="3"/>
+            <VolumeStats statsSet='Totals' mover="4"/>
+        </Subscribe>
+    </Request>
+</RequestPacket>
+23:15:03,615 INFO  [Thread-1                 ] api.EMCApp                     - processIndication [0], [<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<IndicationPacket xmlns="http://www.emc.com/schemas/celerra/xml_api" sequenceNumber="0" time="1396822622">
+    <StatsIndication>
+        <VolumeSet mover="2">
+            <Sample time="1396822621" stamp="50">
+                <Totals reqsRead="39314" reqsWritten="5621259" bytesRead="972016128" bytesWritten="92741025792"/>
+            </Sample>
+        </VolumeSet>
+    </StatsIndication>
+</IndicationPacket>
+]
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Response clientHandle="abcdef"/>
+</ResponsePacket>
+
+23:15:03,814 INFO  [main                     ] api.EMCApp                     -
+23:15:03,820 INFO  [main                     ] api.EMCApp                     -
+23:15:03,827 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\SymmDeviceQueryParams.xml ================
+23:15:03,834 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+    <RequestEx>
+        <Query>
+            <SymmDeviceQueryParams symmetrix="1" configType="bcv">
+                <AspectSelection DeviceAccessInfo="true"></AspectSelection>
+                <deviceRange start="A" size="10"></deviceRange>
+            </SymmDeviceQueryParams>
+        </Query>
+    </RequestEx>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <PacketFault maxSeverity="error">
+        <Problem messageCode="14227341329" facility="Prevalidator" component="API" message="User request is not compliant with XML API schema." severity="error">
+            <Description>The user request is not compliant with the XML API Schema.</Description>
+            <Action>Refer to the XML API v2 schema/documentation and correct your user program logic.</Action>
+            <Diagnostics>
+Exception tag: 145391dc343
+Exception message: cvc-complex-type.2.4.a: Invalid content was found starting with element 'deviceRange'. One of '{&quot;http://www.emc.com/schemas/celerra/xml_api&quot;:DeviceRange}' is expected.
+</Diagnostics>
+        </Problem>
+    </PacketFault>
+</ResponsePacket>
+
+23:15:04,285 INFO  [main                     ] api.EMCApp                     -
+23:15:04,291 INFO  [main                     ] api.EMCApp                     -
+23:15:04,298 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\SymmDirectorQueryParams.xml ================
+23:15:04,305 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+    <RequestEx>
+        <Query>
+            <SymmDirectorQueryParams symmetrix="1">
+                <AspectSelection config="true" status=+���?true+���?></AspectSelection>
+        </SymmDirectorQueryParams>
+    </Query>
+</RequestEx>
+        </RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <PacketFault maxSeverity="error">
+        <Problem messageCode="14227341329" facility="Prevalidator" component="API" message="User request is not compliant with XML API schema." severity="error">
+            <Description>The user request is not compliant with the XML API Schema.</Description>
+            <Action>Refer to the XML API v2 schema/documentation and correct your user program logic.</Action>
+            <Diagnostics>
+Exception tag: 145391dc544
+Exception message: Open quote is expected for attribute &quot;{1}&quot; associated with an  element type  &quot;status&quot;.
+</Diagnostics>
+        </Problem>
+    </PacketFault>
+</ResponsePacket>
+
+23:15:04,775 INFO  [main                     ] api.EMCApp                     -
+23:15:04,780 INFO  [main                     ] api.EMCApp                     -
+23:15:04,788 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\SymmGeneralConfigQueryParams.xml ================
+23:15:04,795 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+    <RequestEx>
+        <Query>
+            <SymmGeneralConfigQueryParams symmetrix="1"></SymmGeneralConfigQueryParams>
+        </Query>
+    </RequestEx>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+    <ResponseEx>
+        <Fault maxSeverity="error">
+            <Problem messageCode="14227275779" facility="JServer" component="API" message="Unable to find JServer config." severity="error">
+                <Description>The Jserver subsystem has not yet initialized the configuraiton cache, so Storage Configuration queries cannot be served at this time.</Description>
+                <Action>1. Retry any storage configuration query after 5-10 minutes. 2. If the problem persists, collect support materials by running the /nas/tools/collect_support_materials script or the newer /nas/tools/automaticcollection script. Note any symptoms.  If you require more information on the materials collection process, refer to the Problem Resolution Roadmap for Celerra, available on EMC Powerlink, or EMC Knowledgebase Support Solution number emc135846.
+
+ For more information on this message, use the text from the error message's brief description or the message's ID to search the Knowledgebase on Powerlink. After logging in to Powerlink, go to Support &gt; Knowledgebase Search &gt; Support Solutions Search.</Action>
+                <Diagnostics>
+Exception tag: 145391dc71b
+Exception message: com.emc.nas.ccmd.common.MessageInstanceImpl@50030003
+</Diagnostics>
+            </Problem>
+        </Fault>
+    </ResponseEx>
+</ResponsePacket>
+
+23:15:05,280 INFO  [main                     ] api.EMCApp                     -
+23:15:05,286 INFO  [main                     ] api.EMCApp                     -
+23:15:05,293 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\SymmPhysicalDiskQueryParams.xml ================
+23:15:05,300 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+    <RequestEx>
+        <Query>
+            <SymmPhysicalDiskQueryParams symmetrix="1"><physicalDisk interface="C" scsiId="1" director="1"></physicalDisk></SymmPhysicalDiskQueryParams>
+        </Query>
+    </RequestEx>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+    <ResponseEx>
+        <Fault maxSeverity="error">
+            <Problem messageCode="14227275779" facility="JServer" component="API" message="Unable to find JServer config." severity="error">
+                <Description>The Jserver subsystem has not yet initialized the configuraiton cache, so Storage Configuration queries cannot be served at this time.</Description>
+                <Action>1. Retry any storage configuration query after 5-10 minutes. 2. If the problem persists, collect support materials by running the /nas/tools/collect_support_materials script or the newer /nas/tools/automaticcollection script. Note any symptoms.  If you require more information on the materials collection process, refer to the Problem Resolution Roadmap for Celerra, available on EMC Powerlink, or EMC Knowledgebase Support Solution number emc135846.
+
+ For more information on this message, use the text from the error message's brief description or the message's ID to search the Knowledgebase on Powerlink. After logging in to Powerlink, go to Support &gt; Knowledgebase Search &gt; Support Solutions Search.</Action>
+                <Diagnostics>
+Exception tag: 145391dc909
+Exception message: com.emc.nas.ccmd.common.MessageInstanceImpl@50030003
+</Diagnostics>
+            </Problem>
+        </Fault>
+    </ResponseEx>
+</ResponsePacket>
+
+23:15:05,774 INFO  [main                     ] api.EMCApp                     -
+23:15:05,781 INFO  [main                     ] api.EMCApp                     -
+23:15:05,788 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\TreeQuotaQueryParams.xml ================
+23:15:05,795 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Request>
+        <Query>
+            <TreeQuotaQueryParams fileSystem="30">
+                <AspectSelection treeSettings="true" treeQuotas="true"
+                                 treeQuotaUsages="true" />
+            </TreeQuotaQueryParams>
+        </Query>
+    </Request>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Response>
+        <QueryStatus maxSeverity="ok"/>
+    </Response>
+</ResponsePacket>
+
+23:15:06,722 INFO  [main                     ] api.EMCApp                     -
+23:15:06,728 INFO  [main                     ] api.EMCApp                     -
+23:15:06,740 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\UserAccountQueryParams.xml ================
+23:15:06,751 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+    <RequestEx>
+        <Query>
+            <UserAccountQueryParams mover="1"></UserAccountQueryParams>
+        </Query>
+    </RequestEx>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+    <ResponseEx>
+        <QueryStatus maxSeverity="ok"/>
+    </ResponseEx>
+</ResponsePacket>
+
+23:15:07,867 INFO  [main                     ] api.EMCApp                     -
+23:15:07,873 INFO  [main                     ] api.EMCApp                     -
+23:15:07,880 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\UserQuotaQueryParams.xml ================
+23:15:07,886 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Request>
+        <Query>
+            <UserQuotaQueryParams fileSystem="30" path="/tree0" uid="201" isGroup="false">
+                <AspectSelection userQuotas="true" userQuotaUsages="true" />
+            </UserQuotaQueryParams>
+        </Query>
+    </Request>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Response>
+        <QueryStatus maxSeverity="ok"/>
+    </Response>
+</ResponsePacket>
+
+23:15:08,729 INFO  [main                     ] api.EMCApp                     -
+23:15:08,736 INFO  [main                     ] api.EMCApp                     -
+23:15:08,742 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\VdmQueryParams.xml ================
+23:15:08,750 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Request>
+        <Query>
+            <VdmQueryParams vdm="301"/>
+        </Query>
+    </Request>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Response>
+        <Fault maxSeverity="error">
+            <Problem messageCode="14227341325" facility="Prevalidator" component="API" message="VDM with id=301 not found." severity="error">
+                <Description>The VDM ID supplied with the request is invalid.</Description>
+                <Action>Refer to the XML API v2 schema/documentation and correct your user program logic.</Action>
+                <Diagnostics>
+Exception tag: 145391dd664
+Exception message: com.emc.nas.ccmd.common.MessageInstanceImpl@5004000d
+</Diagnostics>
+            </Problem>
+        </Fault>
+    </Response>
+</ResponsePacket>
+
+23:15:09,165 INFO  [main                     ] api.EMCApp                     -
+23:15:09,170 INFO  [main                     ] api.EMCApp                     -
+23:15:09,178 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\VolumeQueryParams.xml ================
+23:15:09,185 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Request>
+        <Query>
+            <VolumeQueryParams/>
+        </Query>
+    </Request>
+</RequestPacket>
+========== Celerra Response ==========
+statusCode=200  statusString=OK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Response>
+        <QueryStatus maxSeverity="ok"/>
+        <Volume name="root_disk" type="disk" size="22527" clientVolumes="7 8 9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 75" virtualProvisioning="false" volume="1">
+            <DiskVolumeData storageSystem="1" lun="F9FF" diskType="clstd" movers="1 2" dataServicePolicies=""/>
+            <FreeSpace size="9" offset="22518"/>
+        </Volume>
+        <Volume name="root_volume_1" type="meta" size="16" virtualProvisioning="false" volume="10">
+            <MetaVolumeData memberVolumes="9" clientFileSystems="1"/>
+        </Volume>
+        <Volume name="root_slice_2" type="slice" size="16" clientVolumes="12" virtualProvisioning="false" volume="11">
+            <SliceVolumeData slicedVolume="1" offset="151"/>
+        </Volume>
+        <Volume name="root_volume_2" type="meta" size="256" virtualProvisioning="false" volume="12">
+            <MetaVolumeData memberVolumes="11 78" clientFileSystems="9"/>
+        </Volume>
+        <Volume name="root_slice_3" type="slice" size="16" clientVolumes="14" virtualProvisioning="false" volume="13">
+            <SliceVolumeData slicedVolume="1" offset="167"/>
+        </Volume>
+        <Volume name="root_volume_3" type="meta" size="256" virtualProvisioning="false" volume="14">
+            <MetaVolumeData memberVolumes="13 80" clientFileSystems="10"/>
+        </Volume>
+        <Volume name="root_slice_4" type="slice" size="16" clientVolumes="16" virtualProvisioning="false" volume="15">
+            <SliceVolumeData slicedVolume="1" offset="183"/>
+        </Volume>
+        <Volume name="root_volume_4" type="meta" size="256" virtualProvisioning="false" volume="16">
+            <MetaVolumeData memberVolumes="15 82"/>
+        </Volume>
+        <Volume name="root_slice_5" type="slice" size="16" clientVolumes="18" virtualProvisioning="false" volume="17">
+            <SliceVolumeData slicedVolume="1" offset="199"/>
+        </Volume>
+        <Volume name="root_volume_5" type="meta" size="256" virtualProvisioning="false" volume="18">
+            <MetaVolumeData memberVolumes="17 84"/>
+        </Volume>
+        <Volume name="root_slice_6" type="slice" size="16" clientVolumes="20" virtualProvisioning="false" volume="19">
+            <SliceVolumeData slicedVolume="1" offset="215"/>
+        </Volume>
+        <Volume name="root_ldisk" type="disk" size="11263" clientVolumes="57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 74" virtualProvisioning="false" volume="2">
+            <DiskVolumeData storageSystem="1" lun="F9FE" diskType="clstd" movers="1 2" dataServicePolicies=""/>
+            <FreeSpace size="9" offset="11254"/>
+        </Volume>
+        <Volume name="root_volume_6" type="meta" size="256" virtualProvisioning="false" volume="20">
+            <MetaVolumeData memberVolumes="19 86"/>
+        </Volume>
+        <Volume name="root_slice_7" type="slice" size="16" clientVolumes="22" virtualProvisioning="false" volume="21">
+            <SliceVolumeData slicedVolume="1" offset="231"/>
+        </Volume>
+        <Volume name="root_volume_7" type="meta" size="256" virtualProvisioning="false" volume="22">
+            <MetaVolumeData memberVolumes="21 88"/>
+        </Volume>
+        <Volume name="root_slice_8" type="slice" size="16" clientVolumes="24" virtualProvisioning="false" volume="23">
+            <SliceVolumeData slicedVolume="1" offset="247"/>
+        </Volume>
+        <Volume name="root_volume_8" type="meta" size="256" virtualProvisioning="false" volume="24">
+            <MetaVolumeData memberVolumes="23 90"/>
+        </Volume>
+        <Volume name="root_slice_9" type="slice" size="16" clientVolumes="26" virtualProvisioning="false" volume="25">
+            <SliceVolumeData slicedVolume="1" offset="263"/>
+        </Volume>
+        <Volume name="root_volume_9" type="meta" size="256" virtualProvisioning="false" volume="26">
+            <MetaVolumeData memberVolumes="25 92"/>
+        </Volume>
+        <Volume name="root_slice_10" type="slice" size="16" clientVolumes="28" virtualProvisioning="false" volume="27">
+            <SliceVolumeData slicedVolume="1" offset="279"/>
+        </Volume>
+        <Volume name="root_volume_10" type="meta" size="16" virtualProvisioning="false" volume="28">
+            <MetaVolumeData memberVolumes="27"/>
+        </Volume>
+        <Volume name="root_slice_11" type="slice" size="16" clientVolumes="30" virtualProvisioning="false" volume="29">
+            <SliceVolumeData slicedVolume="1" offset="295"/>
+        </Volume>
+        <Volume name="d3" type="disk" size="2047" clientVolumes="93" virtualProvisioning="false" volume="3">
+            <DiskVolumeData storageSystem="1" lun="F9FC" diskType="clstd" movers="1 2" dataServicePolicies=""/>
+        </Volume>
+        <Volume name="root_volume_11" type="meta" size="16" virtualProvisioning="false" volume="30">
+            <MetaVolumeData memberVolumes="29"/>
+        </Volume>
+        <Volume name="root_slice_12" type="slice" size="16" clientVolumes="32" virtualProvisioning="false" volume="31">
+            <SliceVolumeData slicedVolume="1" offset="311"/>
+        </Volume>
+        <Volume name="root_volume_12" type="meta" size="16" virtualProvisioning="false" volume="32">
+            <MetaVolumeData memberVolumes="31"/>
+        </Volume>
+        <Volume name="root_slice_13" type="slice" size="16" clientVolumes="34" virtualProvisioning="false" volume="33">
+            <SliceVolumeData slicedVolume="1" offset="327"/>
+        </Volume>
+        <Volume name="root_volume_13" type="meta" size="16" virtualProvisioning="false" volume="34">
+            <MetaVolumeData memberVolumes="33"/>
+        </Volume>
+        <Volume name="root_slice_14" type="slice" size="16" clientVolumes="36" virtualProvisioning="false" volume="35">
+            <SliceVolumeData slicedVolume="1" offset="343"/>
+        </Volume>
+        <Volume name="root_volume_14" type="meta" size="16" virtualProvisioning="false" volume="36">
+            <MetaVolumeData memberVolumes="35"/>
+        </Volume>
+        <Volume name="root_slice_15" type="slice" size="16" clientVolumes="38" virtualProvisioning="false" volume="37">
+            <SliceVolumeData slicedVolume="1" offset="359"/>
+        </Volume>
+        <Volume name="root_volume_15" type="meta" size="16" virtualProvisioning="false" volume="38">
+            <MetaVolumeData memberVolumes="37"/>
+        </Volume>
+        <Volume name="root_slice_16" type="slice" size="16" clientVolumes="40" virtualProvisioning="false" volume="39">
+            <SliceVolumeData slicedVolume="1" offset="375"/>
+        </Volume>
+        <Volume name="d4" type="disk" size="2047" clientVolumes="94" virtualProvisioning="false" volume="4">
+            <DiskVolumeData storageSystem="1" lun="F9FB" diskType="clstd" movers="1 2" dataServicePolicies=""/>
+        </Volume>
+        <Volume name="root_volume_16" type="meta" size="16" virtualProvisioning="false" volume="40">
+            <MetaVolumeData memberVolumes="39" clientFileSystems="2"/>
+        </Volume>
+        <Volume name="root_rdf_channel" type="slice" size="4" virtualProvisioning="false" volume="41">
+            <SliceVolumeData slicedVolume="1" offset="391"/>
+        </Volume>
+        <Volume name="root_log_2" type="slice" size="4" virtualProvisioning="false" volume="42">
+            <SliceVolumeData slicedVolume="1" offset="395"/>
+        </Volume>
+        <Volume name="root_log_3" type="slice" size="4" virtualProvisioning="false" volume="43">
+            <SliceVolumeData slicedVolume="1" offset="399"/>
+        </Volume>
+        <Volume name="root_log_4" type="slice" size="4" virtualProvisioning="false" volume="44">
+            <SliceVolumeData slicedVolume="1" offset="403"/>
+        </Volume>
+        <Volume name="root_log_5" type="slice" size="4" virtualProvisioning="false" volume="45">
+            <SliceVolumeData slicedVolume="1" offset="407"/>
+        </Volume>
+        <Volume name="root_log_6" type="slice" size="4" virtualProvisioning="false" volume="46">
+            <SliceVolumeData slicedVolume="1" offset="411"/>
+        </Volume>
+        <Volume name="root_log_7" type="slice" size="4" virtualProvisioning="false" volume="47">
+            <SliceVolumeData slicedVolume="1" offset="415"/>
+        </Volume>
+        <Volume name="root_log_8" type="slice" size="4" virtualProvisioning="false" volume="48">
+            <SliceVolumeData slicedVolume="1" offset="419"/>
+        </Volume>
+        <Volume name="root_log_9" type="slice" size="4" virtualProvisioning="false" volume="49">
+            <SliceVolumeData slicedVolume="1" offset="423"/>
+        </Volume>
+        <Volume name="d5" type="disk" size="4095" clientVolumes="95" virtualProvisioning="false" volume="5">
+            <DiskVolumeData storageSystem="1" lun="F9FD" diskType="clstd" movers="1 2" dataServicePolicies=""/>
+        </Volume>
+        <Volume name="root_log_10" type="slice" size="4" virtualProvisioning="false" volume="50">
+            <SliceVolumeData slicedVolume="1" offset="427"/>
+        </Volume>
+        <Volume name="root_log_11" type="slice" size="4" virtualProvisioning="false" volume="51">
+            <SliceVolumeData slicedVolume="1" offset="431"/>
+        </Volume>
+        <Volume name="root_log_12" type="slice" size="4" virtualProvisioning="false" volume="52">
+            <SliceVolumeData slicedVolume="1" offset="435"/>
+        </Volume>
+        <Volume name="root_log_13" type="slice" size="4" virtualProvisioning="false" volume="53">
+            <SliceVolumeData slicedVolume="1" offset="439"/>
+        </Volume>
+        <Volume name="root_log_14" type="slice" size="4" virtualProvisioning="false" volume="54">
+            <SliceVolumeData slicedVolume="1" offset="443"/>
+        </Volume>
+        <Volume name="root_log_15" type="slice" size="4" virtualProvisioning="false" volume="55">
+            <SliceVolumeData slicedVolume="1" offset="447"/>
+        </Volume>
+        <Volume name="root_log_16" type="slice" size="4" virtualProvisioning="false" volume="56">
+            <SliceVolumeData slicedVolume="1" offset="451"/>
+        </Volume>
+        <Volume name="root_ufslog_1" type="slice" size="64" clientVolumes="73" virtualProvisioning="false" volume="57">
+            <SliceVolumeData slicedVolume="2" offset="0"/>
+        </Volume>
+        <Volume name="root_ufslog_2" type="slice" size="64" clientVolumes="73" virtualProvisioning="false" volume="58">
+            <SliceVolumeData slicedVolume="2" offset="64"/>
+        </Volume>
+        <Volume name="root_ufslog_3" type="slice" size="64" clientVolumes="73" virtualProvisioning="false" volume="59">
+            <SliceVolumeData slicedVolume="2" offset="128"/>
+        </Volume>
+        <Volume name="d6" type="disk" size="65535" clientVolumes="96" virtualProvisioning="false" volume="6">
+            <DiskVolumeData storageSystem="1" lun="F9FA" diskType="clstd" movers="1 2" dataServicePolicies=""/>
+        </Volume>
+        <Volume name="root_ufslog_4" type="slice" size="64" clientVolumes="73" virtualProvisioning="false" volume="60">
+            <SliceVolumeData slicedVolume="2" offset="192"/>
+        </Volume>
+        <Volume name="root_ufslog_5" type="slice" size="64" clientVolumes="73" virtualProvisioning="false" volume="61">
+            <SliceVolumeData slicedVolume="2" offset="256"/>
+        </Volume>
+        <Volume name="root_ufslog_6" type="slice" size="64" clientVolumes="73" virtualProvisioning="false" volume="62">
+            <SliceVolumeData slicedVolume="2" offset="320"/>
+        </Volume>
+        <Volume name="root_ufslog_7" type="slice" size="64" clientVolumes="73" virtualProvisioning="false" volume="63">
+            <SliceVolumeData slicedVolume="2" offset="384"/>
+        </Volume>
+        <Volume name="root_ufslog_8" type="slice" size="64" clientVolumes="73" virtualProvisioning="false" volume="64">
+            <SliceVolumeData slicedVolume="2" offset="448"/>
+        </Volume>
+        <Volume name="root_ufslog_9" type="slice" size="64" clientVolumes="73" virtualProvisioning="false" volume="65">
+            <SliceVolumeData slicedVolume="2" offset="512"/>
+        </Volume>
+        <Volume name="root_ufslog_10" type="slice" size="64" clientVolumes="73" virtualProvisioning="false" volume="66">
+            <SliceVolumeData slicedVolume="2" offset="576"/>
+        </Volume>
+        <Volume name="root_ufslog_11" type="slice" size="64" clientVolumes="73" virtualProvisioning="false" volume="67">
+            <SliceVolumeData slicedVolume="2" offset="640"/>
+        </Volume>
+        <Volume name="root_ufslog_12" type="slice" size="64" clientVolumes="73" virtualProvisioning="false" volume="68">
+            <SliceVolumeData slicedVolume="2" offset="704"/>
+        </Volume>
+        <Volume name="root_ufslog_13" type="slice" size="64" clientVolumes="73" virtualProvisioning="false" volume="69">
+            <SliceVolumeData slicedVolume="2" offset="768"/>
+        </Volume>
+        <Volume name="root_dos" type="slice" size="134" virtualProvisioning="false" volume="7">
+            <SliceVolumeData slicedVolume="1" offset="0"/>
+        </Volume>
+        <Volume name="root_ufslog_14" type="slice" size="64" clientVolumes="73" virtualProvisioning="false" volume="70">
+            <SliceVolumeData slicedVolume="2" offset="832"/>
+        </Volume>
+        <Volume name="root_ufslog_15" type="slice" size="64" clientVolumes="73" virtualProvisioning="false" volume="71">
+            <SliceVolumeData slicedVolume="2" offset="896"/>
+        </Volume>
+        <Volume name="root_ufslog_16" type="slice" size="64" clientVolumes="73" virtualProvisioning="false" volume="72">
+            <SliceVolumeData slicedVolume="2" offset="960"/>
+        </Volume>
+        <Volume name="root_ufslog" type="meta" size="1024" virtualProvisioning="false" volume="73">
+            <MetaVolumeData memberVolumes="57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72" clientFileSystems="3"/>
+        </Volume>
+        <Volume name="root_ldisk_reserve" type="slice" size="10230" clientVolumes="77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92" virtualProvisioning="false" volume="74">
+            <SliceVolumeData slicedVolume="2" offset="1024"/>
+            <FreeSpace size="8246" offset="1984"/>
+        </Volume>
+        <Volume name="root_disk_reserve" type="slice" size="22063" clientVolumes="76" virtualProvisioning="false" volume="75">
+            <SliceVolumeData slicedVolume="1" offset="455"/>
+        </Volume>
+        <Volume name="root_panic_reserve" type="meta" size="22063" virtualProvisioning="false" volume="76">
+            <MetaVolumeData memberVolumes="75" clientFileSystems="4"/>
+        </Volume>
+        <Volume name="root_panic_2" type="slice" size="8" virtualProvisioning="false" volume="77">
+            <SliceVolumeData slicedVolume="74" offset="0"/>
+        </Volume>
+        <Volume name="root_s54_2" type="slice" size="240" clientVolumes="12" virtualProvisioning="false" volume="78">
+            <SliceVolumeData slicedVolume="74" offset="8"/>
+        </Volume>
+        <Volume name="root_panic_3" type="slice" size="8" virtualProvisioning="false" volume="79">
+            <SliceVolumeData slicedVolume="74" offset="248"/>
+        </Volume>
+        <Volume name="root_layout" type="slice" size="1" virtualProvisioning="false" volume="8">
+            <SliceVolumeData slicedVolume="1" offset="134"/>
+        </Volume>
+        <Volume name="root_s56_3" type="slice" size="240" clientVolumes="14" virtualProvisioning="false" volume="80">
+            <SliceVolumeData slicedVolume="74" offset="256"/>
+        </Volume>
+        <Volume name="root_panic_4" type="slice" size="8" virtualProvisioning="false" volume="81">
+            <SliceVolumeData slicedVolume="74" offset="496"/>
+        </Volume>
+        <Volume name="root_s58_4" type="slice" size="240" clientVolumes="16" virtualProvisioning="false" volume="82">
+            <SliceVolumeData slicedVolume="74" offset="504"/>
+        </Volume>
+        <Volume name="root_panic_5" type="slice" size="8" virtualProvisioning="false" volume="83">
+            <SliceVolumeData slicedVolume="74" offset="744"/>
+        </Volume>
+        <Volume name="root_s60_5" type="slice" size="240" clientVolumes="18" virtualProvisioning="false" volume="84">
+            <SliceVolumeData slicedVolume="74" offset="752"/>
+        </Volume>
+        <Volume name="root_panic_6" type="slice" size="8" virtualProvisioning="false" volume="85">
+            <SliceVolumeData slicedVolume="74" offset="992"/>
+        </Volume>
+        <Volume name="root_s62_6" type="slice" size="240" clientVolumes="20" virtualProvisioning="false" volume="86">
+            <SliceVolumeData slicedVolume="74" offset="1000"/>
+        </Volume>
+        <Volume name="root_panic_7" type="slice" size="8" virtualProvisioning="false" volume="87">
+            <SliceVolumeData slicedVolume="74" offset="1240"/>
+        </Volume>
+        <Volume name="root_s64_7" type="slice" size="240" clientVolumes="22" virtualProvisioning="false" volume="88">
+            <SliceVolumeData slicedVolume="74" offset="1248"/>
+        </Volume>
+        <Volume name="root_panic_8" type="slice" size="8" virtualProvisioning="false" volume="89">
+            <SliceVolumeData slicedVolume="74" offset="1488"/>
+        </Volume>
+        <Volume name="root_slice_1" type="slice" size="16" clientVolumes="10" virtualProvisioning="false" volume="9">
+            <SliceVolumeData slicedVolume="1" offset="135"/>
+        </Volume>
+        <Volume name="root_s66_8" type="slice" size="240" clientVolumes="24" virtualProvisioning="false" volume="90">
+            <SliceVolumeData slicedVolume="74" offset="1496"/>
+        </Volume>
+        <Volume name="root_panic_9" type="slice" size="8" virtualProvisioning="false" volume="91">
+            <SliceVolumeData slicedVolume="74" offset="1736"/>
+        </Volume>
+        <Volume name="root_s68_9" type="slice" size="240" clientVolumes="26" virtualProvisioning="false" volume="92">
+            <SliceVolumeData slicedVolume="74" offset="1744"/>
+        </Volume>
+        <Volume name="md3" type="meta" size="2047" virtualProvisioning="false" volume="93">
+            <MetaVolumeData memberVolumes="3" clientFileSystems="5"/>
+        </Volume>
+        <Volume name="md4" type="meta" size="2047" virtualProvisioning="false" volume="94">
+            <MetaVolumeData memberVolumes="4" clientFileSystems="6"/>
+        </Volume>
+        <Volume name="md5" type="meta" size="4095" virtualProvisioning="false" volume="95">
+            <MetaVolumeData memberVolumes="5" clientFileSystems="7"/>
+        </Volume>
+        <Volume name="md6" type="meta" size="65535" virtualProvisioning="false" volume="96">
+            <MetaVolumeData memberVolumes="6" clientFileSystems="8"/>
+        </Volume>
+    </Response>
+</ResponsePacket>
+
+23:15:13,270 INFO  [main                     ] api.EMCApp                     - Running round robin query for the following calls [[queries\CelerraSystemQueryParams.xml, queries\CheckpointQueryParams.xml, queries\CifsConfigQueryParams.xml, queries\CifsServerQueryParams.xml, queries\CifsShareQueryParams.xml, queries\ClariionDeviceQueryParams.xml, queries\ClariionDiskQueryParams.xml, queries\ClariionGeneralConfigQueryParams.xml, queries\ClariionRaidGroupQueryParams.xml, queries\ClariionSpQueryParams.xml, queries\ControlStationQueryParams.xml, queries\DhsmConnectionQueryParam.xml, queries\EncodingConfigQueryParams.xml, queries\EncodingQueryParams.xml, queries\EventQueryParams.xml, queries\FileSystemLocationQueryParams.xml, queries\FileSystemQueryParams.xml, queries\IscsiLunQueryParams.xml, queries\IscsiMaskQueryParams.xml, queries\IscsiServiceQueryParams.xml, queries\IscsiSharedSecretQueryParams.xml, queries\IscsiTargetQueryParams.xml, queries\MountQueryParams.xml, queries\MoverHostQuery
+Params.xml, queries\MoverHttpFeatureQueryParams.xml, queries\MoverQueryParams.xml, queries\NfsExportQueryParams.xml, queries\SnmpServiceQueryParams.xml, queries\StoragePoolQueryParams.xml, queries\StorageSystemQueryParams.xml, queries\SubscribeStats.xml, queries\SubscribeStats1.xml, queries\SymmDeviceQueryParams.xml, queries\SymmDirectorQueryParams.xml, queries\SymmGeneralConfigQueryParams.xml, queries\SymmPhysicalDiskQueryParams.xml, queries\TreeQuotaQueryParams.xml, queries\UserAccountQueryParams.xml, queries\UserQuotaQueryParams.xml, queries\VdmQueryParams.xml, queries\VolumeQueryParams.xml]]
+23:15:13,303 INFO  [main                     ] api.EMCApp                     -
+23:15:13,308 INFO  [main                     ] api.EMCApp                     -
+23:15:13,315 INFO  [main                     ] api.EMCApp                     - Terminate batch job (Y/N)? y

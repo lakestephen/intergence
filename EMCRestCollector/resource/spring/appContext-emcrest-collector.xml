@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       					   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"
+       default-autowire="byType">
+
+
+    <context:property-placeholder location="classpath*:emcrest.properties" ignore-unresolvable="true"/>
+
+    <bean class="com.intergence.hgsrest.emc.collector.EmcTopologyDiscoverer"
+            p:collectorName="${emc.collector.name}"
+            p:emcDao-ref="emcDao"
+            p:executeOrder="${emc.execute.order}"/>
+
+    <bean id="emcConnectorManager" class="com.intergence.hgsrest.emc.connector.DefaultEmcConnectorManager"
+            init-method="init"
+            p:host="${emc.connection.host}"
+            p:port="${emc.connection.port}"
+            p:proxyHost="${emc.connection.proxy.host}"
+            p:proxyPort="${emc.connection.proxy.port}"
+            p:username="${emc.connection.username}"
+            p:password="${emc.connection.password}"
+            p:threadCount="${emc.manager.threadcount}"
+            p:timeoutSeconds="${emc.manager.timeout.seconds}"/>
+
+    <bean id="cannedDataEmcConnectionManager" class="com.intergence.hgsrest.emc.connector.CelerraDaoCannedDataEmcConnectionManager"/>
+
+    <bean id="emcDao" class="com.intergence.hgsrest.emc.data.dao.CelerraEmcDao"
+          p:emcConnectorManager-ref="#{(${emc.usecanneddata} == false) ? 'emcConnectorManager' : 'cannedDataEmcConnectionManager'}"/>
+
+</beans>
