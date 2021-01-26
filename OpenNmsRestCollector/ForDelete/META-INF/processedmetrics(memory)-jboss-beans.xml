@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployment xmlns="urn:jboss:bean-deployer:2.0">
+	
+	<bean name="OnmsMemory" class="com.realstatus.hgs.model.metric.normalisation.NormalisedMetricDefinition">
+		<property name="name">Memory</property>
+		<property name="unit">%</property>
+		
+		<property name="preferredRollup">AVERAGE</property>
+		
+		<property name="strategies">
+			<list elementClass="com.realstatus.hgs.model.metric.normalisation.CalculationStrategy">
+			
+			
+				<bean class="com.realstatus.hgs.model.metric.normalisation.QuotientMetricStrategy">
+					<property name="strategyTitle">hostResourcesMib</property>
+					
+					<property name="numeratorName">hrStorageUsed</property>
+					<property name="numeratorDistinguisher">PhysicalMemory</property>
+					<property name="numeratorSourcedFromType">Node</property>
+					<property name="numeratorHasSourcedFromField">false</property>
+					
+					<property name="denominatorName">hrStorageSize</property>
+					<property name="denominatorDistinguisher">PhysicalMemory</property>
+					<property name="denominatorSourcedFromType">Node</property>
+					<property name="denominatorHasSourcedFromField">false</property>
+					
+					<property name="asPercentage">true</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.QuotientMetricStrategy">
+					<property name="strategyTitle">CiscoMemoryPool</property>
+					
+					<property name="numeratorName">ciscoMemoryPoolUsed</property>
+					<property name="numeratorSourcedFromType">Node</property>
+					<property name="numeratorHasSourcedFromField">false</property>
+					
+					<property name="denominatorName">ciscoMemoryPoolFree</property>
+					<property name="denominatorSourcedFromType">Node</property>
+					<property name="denominatorHasSourcedFromField">false</property>
+					
+					<property name="denominatorIsTotalOfBothMetrics">true</property>
+					<property name="asPercentage">true</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.RawMetricStrategy">
+					<property name="strategyTitle">juniper</property>
+					<property name="name">juniSMMemUtilPct</property>
+					<property name="sourcedFromType">Node</property>
+					<property name="hasSourcedFromField">false</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.QuotientMetricStrategy">
+					<property name="strategyTitle">juniper-router</property>
+					
+					<property name="numeratorName">juniperMemUsed</property>
+					<property name="numeratorSourcedFromType">Node</property>
+					<property name="numeratorHasSourcedFromField">false</property>
+					
+					<property name="denominatorName">juniperMemInst</property>
+					<property name="denominatorSourcedFromType">Node</property>
+					<property name="denominatorHasSourcedFromField">false</property>
+					
+					<property name="asPercentage">false</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.QuotientMetricStrategy">
+					<property name="strategyTitle">NetScaler</property>
+					
+					<property name="numeratorName">NSresMemUsage</property>
+					<property name="numeratorSourcedFromType">Node</property>
+					<property name="numeratorHasSourcedFromField">false</property>
+					
+					<property name="denominatorName">NSmemSizeMB</property>
+					<property name="denominatorSourcedFromType">Node</property>
+					<property name="denominatorHasSourcedFromField">false</property>
+					
+					<property name="asPercentage">false</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.QuotientMetricStrategy">
+					<property name="strategyTitle">Novell</property>
+					
+					<property name="numeratorName">codeDataMemoryUsed</property>
+					<property name="numeratorSourcedFromType">Node</property>
+					<property name="numeratorHasSourcedFromField">false</property>
+					
+					<property name="denominatorName">codeDataMemorySize</property>
+					<property name="denominatorSourcedFromType">Node</property>
+					<property name="denominatorHasSourcedFromField">false</property>
+					
+					<property name="asPercentage">false</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.QuotientMetricStrategy">
+					<property name="strategyTitle">F5</property>
+					
+					<property name="numeratorName">f5MemoryUsed</property>
+					<property name="numeratorSourcedFromType">Node</property>
+					<property name="numeratorHasSourcedFromField">false</property>
+					
+					<property name="denominatorName">f5MemoryTotal</property>
+					<property name="denominatorSourcedFromType">Node</property>
+					<property name="denominatorHasSourcedFromField">false</property>
+					
+					<property name="asPercentage">false</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.QuotientMetricStrategy">
+					<property name="strategyTitle">sysMem</property>
+					
+					<property name="numeratorName">sysMemInUse</property>
+					<property name="numeratorSourcedFromType">Node</property>
+					<property name="numeratorHasSourcedFromField">false</property>
+					
+					<property name="denominatorName">sysMemInTotal</property>
+					<property name="denominatorSourcedFromType">Node</property>
+					<property name="denominatorHasSourcedFromField">false</property>
+					
+					<property name="asPercentage">false</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.RawMetricStrategy">
+					<property name="strategyTitle">Net Health</property>
+					<property name="name">pgMonMem</property>
+					<property name="sourcedFromType">Node</property>
+					<property name="hasSourcedFromField">false</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.RawMetricStrategy">
+					<property name="strategyTitle">Foundary</property>
+					<property name="name">snAgGblDynMemUtil</property>
+					<property name="sourcedFromType">Node</property>
+					<property name="hasSourcedFromField">false</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.QuotientMetricStrategy">
+					<property name="strategyTitle">UcdMib</property>
+					
+					<!--
+				    	Required metrics (From Net-SNMP UCD-SNMP-MIB)
+						
+						Selected others in this group (FYI only):
+						
+						memAvailSwap - Swap file available 	(UNUSED)
+						memBuffer    - ?					(UNUSED)
+						memCached    - ?					(UNUSED)
+						memShared    - ?					(UNUSED)
+						memTotalFree - ?					(UNUSED)
+				
+						The calculation:
+						   ((memTotalReal - memAvailableReal) / memTotalReal) * 100
+					-->
+					
+					<property name="numeratorName">memAvailReal</property>
+					<property name="numeratorSourcedFromType">Node</property>
+					<property name="numeratorHasSourcedFromField">false</property>
+					
+					<property name="denominatorName">memTotalReal</property>
+					<property name="denominatorSourcedFromType">Node</property>
+					<property name="denominatorHasSourcedFromField">false</property>
+					
+					<property name="numeratorIsDifferenceFromDenominator">true</property>
+					<property name="asPercentage">true</property>
+				</bean>
+				
+			</list>
+		</property>
+	</bean>
+
+</deployment>

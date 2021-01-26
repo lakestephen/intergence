@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+    <RequestEx>
+        <Query>
+            <SymmDeviceQueryParams symmetrix="1" configType="bcv">
+                <AspectSelection DeviceAccessInfo="true"></AspectSelection>
+                <deviceRange start="A" size="10"></deviceRange>
+            </SymmDeviceQueryParams>
+        </Query>
+    </RequestEx>
+</RequestPacket>

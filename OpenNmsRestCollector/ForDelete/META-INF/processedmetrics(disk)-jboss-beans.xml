@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployment xmlns="urn:jboss:bean-deployer:2.0">
+	
+	<bean name="OnmsDisk" class="com.realstatus.hgs.model.metric.normalisation.NormalisedMetricDefinition">
+		<property name="name">Disk</property>
+		<property name="unit">%</property>
+		
+		<property name="preferredRollup">AVERAGE</property>
+		
+		<property name="strategies">
+			<list elementClass="com.realstatus.hgs.model.metric.normalisation.CalculationStrategy">
+			
+				<bean class="com.realstatus.hgs.model.metric.normalisation.ScriptedMetricStrategy">
+					<property name="strategyTitle">hostResourcesMib</property>
+					
+					<!--
+				    	Required metrics from MIB2 Host Resources Storage Group.
+				    	
+				    	TODO INMS-825 consider changing this (obviously the impact would be outside this method too!)
+						we used to pass a drive letter or min/max/ave through at the end of the metric name and parse that out
+						we don't do that anymore. 
+						
+						For now let's calculate for all drives (all non-memory hostResources directories) and take an average. 
+						In future perhaps we should change this ?
+					-->
+					
+					<property name="dataRequirements">
+						<bean class="com.realstatus.hgs.collection.requirements.CollectorDataRequirements">
+							<property name="metrics">
+								<list>
+									<bean class="com.realstatus.hgs.collection.requirements.RawMetricRequirement">
+										<property name="sourcedFromType">Node</property>
+										<property name="name">hrStorageUsed</property>
+										<property name="distinguisher">*</property>
+									</bean>
+									<bean class="com.realstatus.hgs.collection.requirements.RawMetricRequirement">
+										<property name="sourcedFromType">Node</property>
+										<property name="name">hrStorageSize</property>
+										<property name="distinguisher">*</property>
+									</bean>
+								</list>
+							</property>
+						</bean>
+					</property>
+					
+					
+					<property name="script">
+					<![CDATA[
+						function calculate(node) {
+							// sum all hrStorageUsed metrics and all hrStorageSize metrics for drive letters then divide one by the other
+							
+							var usedSum = null;
+							var sizeSum = null;
+							
+							foreach (entry : node.rawMetricTimeSeries.entrySet()) {
+								if (entry.key.name == "hrStorageUsed" && !(entry.key.distinguisher contains "Memory")) {
+									usedSum = usedSum == null ? entry.value : usedSum.add(entry.value);
+								}
+								
+								if (entry.key.name == "hrStorageSize" && !(entry.key.distinguisher contains "Memory")) {
+									sizeSum = sizeSum == null ? entry.value : sizeSum.add(entry.value);
+								}
+							}
+							
+							if (usedSum == null || sizeSum == null) {
+								return 'expected value not available for disk calculation';
+							}
+							
+							if (usedSum.isEmpty() || sizeSum.isEmpty()) {
+								return 'no datapoints available for disk calculation';
+							}
+							
+							return usedSum.percentOf(sizeSum);
+						}
+					]]>
+					</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.RawMetricStrategy">
+					<property name="strategyTitle">Net-SNMP</property>
+					<property name="name">ns-dskPercentNode</property>
+					<property name="sourcedFromType">Node</property>
+					<property name="hasSourcedFromField">false</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.QuotientMetricStrategy">
+					<property name="strategyTitle">software-scalars</property>
+					
+					<property name="numeratorName">swStorageConfigFree</property>
+					<property name="numeratorSourcedFromType">Node</property>
+					<property name="numeratorHasSourcedFromField">false</property>
+					
+					<property name="denominatorName">swStorageConfigTot</property>
+					<property name="denominatorSourcedFromType">Node</property>
+					<property name="denominatorHasSourcedFromField">false</property>
+					
+					<property name="asPercentage">false</property>
+				</bean>
+				
+			</list>
+		</property>
+	</bean>
+
+</deployment>

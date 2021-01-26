@@ -1,0 +1,27 @@
+<!-- Query for the general configurations -->
+
+<?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+    <RequestEx>
+        <Query>
+            <ClariionGeneralConfigQueryParams clariion="1"></ClariionGeneralConfigQueryParams>
+        </Query>
+    </RequestEx>
+</RequestPacket>
+
+<!-- Get details about the logical file system -->
+<!-- Kinda corresponds to EMC-Storage > Storage > Storage Configuration > Volumes -->
+
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+<Request>
+    <Query>
+        <FileSystemQueryParams>
+            <AspectSelection fileSystems="true"
+                             fileSystemCapacityInfos="true"
+                             fileSystemCheckpointInfos="true"
+                             fileSystemCapabilities="true" />
+        </FileSystemQueryParams>
+    </Query>
+</Request>
+</RequestPacket>

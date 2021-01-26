@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api" >
+    <Request clientHandle='abcdef'>
+        <Subscribe>
+            <VolumeStats statsSet='Totals' mover="1"/>
+            <VolumeStats statsSet='Totals' mover="2"/>
+            <VolumeStats statsSet='Totals' mover="3"/>
+            <VolumeStats statsSet='Totals' mover="4"/>
+        </Subscribe>
+    </Request>
+</RequestPacket>

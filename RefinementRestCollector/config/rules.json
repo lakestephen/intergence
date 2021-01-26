@@ -1,0 +1,28 @@
+{
+  "rules": [
+    {
+      "name": "Steve's ip to ipaddress rule",
+      "sourceTopologyType": "ENDPOINT",
+      "sourceAttributeNameRegex": "ip",
+      "destinationTopologyType": "ENDPOINT",
+      "destinationAttributeNameRegex": "ipaddress"
+    },
+
+    {
+      "name": "Steve's IP rule",
+      "sourceTopologyType": "ENDPOINT",
+      "sourceAttributeNameRegex": "ip",
+      "destinationTopologyType": "NODE",
+      "destinationAttributeNameRegex": "ip"
+    },
+    {
+      "name": "Steve's Cloud Connection",
+      "sourceTopologyType": "NODE",
+      "sourceAttributeNameRegex": "serial number",
+      "sourceAttributeValueRegex": "CF2BN1404.*",
+      "destinationTopologyType": "ENDPOINT",
+      "destinationAttributeNameRegex": "gathering",
+      "destinationAttributeValueRegex": "cloud"
+    }
+  ]
+}

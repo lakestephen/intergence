@@ -1,0 +1,6 @@
+group,key,type,,,name,value
+endpoints,ep2,test2,test1,test4,test5
+links,ltest1,test1,ep2,ep1,ep2,test5
+nodes,test1,test2,test3,test4,test5,test6
+endpoints,ep1,test2,test2,test4,test5
+nodes,test2,test3,test4,test5,test6

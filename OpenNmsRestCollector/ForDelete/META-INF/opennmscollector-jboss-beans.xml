@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployment xmlns="urn:jboss:bean-deployer:2.0">
+	
+	<bean name="OnmsProcessedMetricProperties" class="com.realstatus.hgs.collection.ProcessedMetricCollectorProperties">
+		<property name="nodeNormalisers">
+			<list elementClass="com.realstatus.hgs.model.metric.normalisation.MetricNormalisation">
+				<inject bean="OnmsCPU" />
+				<inject bean="OnmsMemory" />
+				<inject bean="OnmsDisk" />
+			</list>
+		</property>
+		
+		<property name="endpointNormalisers">
+			<list elementClass="com.realstatus.hgs.model.metric.normalisation.MetricNormalisation">
+				<inject bean="OnmsInputBandwidth" />
+				<inject bean="OnmsOutputBandwidth" />
+			</list>
+		</property>
+		
+		<property name="graphDefaults">
+			<list>
+				<bean class="com.realstatus.hgs.model.metric.normalisation.GraphableForType">
+					<property name="displayByDefaultForType">Node</property>
+					<property name="metrics"><list>
+						<inject bean="OnmsCPU" />
+						<inject bean="OnmsMemory" />
+						<inject bean="OnmsDisk" />
+					</list></property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.GraphableForType">
+					<property name="displayByDefaultForType">Interface</property>
+					<property name="metrics"><list>
+						<inject bean="OnmsInputBandwidth" />
+						<inject bean="OnmsOutputBandwidth" />
+					</list></property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean name="OnmsNodeDetailQueries" class="com.realstatus.hgs.collection.QueryListContainer">
+		<property name="list">
+			<list class="java.util.ArrayList" elementClass="java.lang.String">
+				<value>
+					SELECT node.nodeId AS nodeid,
+						node.nodeCreateTime AS "Create Time",
+						node.nodeSysContact AS "Contact",
+						node.nodeSysName AS "Name",
+						node.nodeSysDescription AS "Description",
+						node.nodeSysLocation AS "Location",
+						node.nodeSysOid AS "OID",
+						node.nodeLabel AS "Label",
+						ipInterface.ipAddr AS "IP Address"
+					FROM Node
+					LEFT OUTER JOIN IpInterface ON ipInterface.nodeId = node.nodeId AND ipInterface.isSnmpPrimary = 'P'
+					WHERE node.nodeType != 'D'
+				</value>
+			</list>
+		</property>
+		<property name="detailWhereClauses">
+			<list class="java.util.ArrayList" elementClass="java.lang.String">
+				<value>node.nodeId = ?</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean name="OnmsNodeIdentityQueries" class="com.realstatus.hgs.collection.QueryListContainer">
+		<property name="list">
+			<list class="java.util.ArrayList" elementClass="java.lang.String">
+				<value>
+					SELECT node.nodeId AS nodeid,
+						node.nodeSysName AS "Name",
+						node.nodeSysOid AS "OID",
+						ipInterface.ipAddr AS "IP Address"
+					FROM Node
+					LEFT OUTER JOIN IpInterface ON ipInterface.nodeId = node.nodeId AND ipInterface.isSnmpPrimary = 'P'
+					WHERE node.nodeType != 'D'
+				</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean name="OnmsEndpointIdentityQueries" class="com.realstatus.hgs.collection.QueryListContainer">
+		<property name="list">
+			<list class="java.util.ArrayList" elementClass="java.lang.String">
+				<value>
+					SELECT s.id AS endpointid,
+						s.nodeId AS nodeid,
+						s.ipaddr AS "IP Address",
+						s.snmpipadentnetmask AS "Netmask",
+						s.snmpphysaddr AS "Physical Address",
+						s.snmpifindex AS "Interface Index",
+						s.snmpifname AS "Interface Name",
+						s.snmpifalias AS "Interface Alias"
+					FROM SnmpInterface s
+					JOIN Node n ON n.nodeId = s.nodeid
+					WHERE n.nodeType != 'D'
+				</value>
+			</list>		
+		</property>
+	</bean>
+	
+	<bean name="OnmsEndpointDetailQueries" class="com.realstatus.hgs.collection.QueryListContainer">
+		<property name="list">
+			<list class="java.util.ArrayList" elementClass="java.lang.String">
+				<value>
+					SELECT s.id AS endpointid,
+						s.nodeId AS nodeid,
+						s.ipaddr AS "IP Address",
+						s.snmpipadentnetmask AS "Netmask",
+						s.snmpphysaddr AS "Physical Address",
+						s.snmpifindex AS "Interface Index",
+						s.snmpifdescr AS "Interface Description",
+						s.snmpifname AS "Interface Name",
+
+						s.snmpifspeed AS "Interface Speed",
+						s.snmpifalias AS "Interface Alias",
+						(CASE s.snmpIfAdminStatus
+							WHEN 1 THEN 'Up'
+							WHEN 2 THEN 'Down'
+							WHEN 3 THEN 'Testing'
+                            ELSE 'Unknown'
+						END) AS "Admin Status",
+						(CASE s.snmpIfOperStatus
+							WHEN 1 THEN 'Up'
+							WHEN 2 THEN 'Down'
+							WHEN 3 THEN 'Testing'
+                            ELSE 'Unknown'
+						END) AS "Operational Status"
+					FROM SnmpInterface s
+					JOIN Node n ON n.nodeId = s.nodeid
+					WHERE n.nodeType != 'D'
+				</value>
+			</list>		
+		</property>
+		<property name="detailWhereClauses">
+			<list class="java.util.ArrayList" elementClass="java.lang.String">
+				<value>s.id = ?</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean name="OnmsLinkIdentityQueries" class="com.realstatus.hgs.collection.QueryListContainer">
+		<property name="list">
+			<list class="java.util.ArrayList" elementClass="java.lang.String">
+				<value>
+					SELECT 
+					    datalinkinterface.id AS linkid,
+						s1.id AS endaid,
+						s2.id AS endbid
+					FROM DataLinkInterface
+					JOIN SnmpInterface s1 ON s1.nodeid = datalinkinterface.nodeid AND s1.snmpifindex = datalinkinterface.ifindex
+					JOIN SnmpInterface s2 ON s2.nodeId = datalinkinterface.nodeParentid AND s2.snmpifindex = datalinkinterface.parentifindex
+					JOIN Node n1 ON n1.nodeId = datalinkinterface.nodeid
+					JOIN Node n2 ON n2.nodeId = datalinkinterface.nodeparentid
+					WHERE n1.nodeType != 'D' AND n2.nodeType != 'D' AND datalinkinterface.status != 'D'
+						<!-- AND datalinkinterface.ifindex > -1 AND datalinkinterface.parentifindex > -1 	--> 
+						<!-- consider uncommenting the line above to ignore links involving "unknown" SNMP interface indices
+						     This has pros and cons - sometimes it can result in a clearer network graph, sometimes it can result in 
+						     unhooking a lot of devices. Recent experimentation seems to show that our current default settings, along with
+						     the CoLocatedLinkRefinementCollector yield the best overall results  -->
+				</value>
+			</list>			
+		</property>
+	</bean>
+	
+	<bean name="OnmsLinkDetailQueries" class="com.realstatus.hgs.collection.QueryListContainer">
+		<property name="list">
+			<list class="java.util.ArrayList" elementClass="java.lang.String">
+				<value>
+					SELECT 
+					    datalinkinterface.id AS linkid,
+						s1.id AS endaid,
+						s2.id AS endbid
+					FROM DataLinkInterface
+					JOIN SnmpInterface s1 ON s1.nodeid = datalinkinterface.nodeid AND s1.snmpifindex = datalinkinterface.ifindex
+					JOIN SnmpInterface s2 ON s2.nodeId = datalinkinterface.nodeParentid AND s2.snmpifindex = datalinkinterface.parentifindex
+					JOIN Node n1 ON n1.nodeId = datalinkinterface.nodeid
+					JOIN Node n2 ON n2.nodeId = datalinkinterface.nodeparentid
+					WHERE n1.nodeType != 'D' AND n2.nodeType != 'D' AND datalinkinterface.status != 'D'
+						<!-- AND datalinkinterface.ifindex > -1 AND datalinkinterface.parentifindex > -1 	--> 
+						<!-- consider uncommenting the line above to ignore links involving "unknown" SNMP interface indices
+						     This has pros and cons - sometimes it can result in a clearer network graph, sometimes it can result in 
+						     unhooking a lot of devices. Recent experimentation seems to show that our current default settings, along with
+						     the CoLocatedLinkRefinementCollector yield the best overall results  -->
+				</value>
+			</list>			
+		</property>
+		<property name="detailWhereClauses">
+			<list class="java.util.ArrayList" elementClass="java.lang.String">
+				<value>datalinkinterface.id = ?</value>
+			</list>
+		</property>		
+	</bean>
+	
+	<bean name="OnmsAlarmQueries" class="com.realstatus.hgs.collection.QueryListContainer">
+		<property name="list">
+			<list class="java.util.ArrayList" elementClass="java.lang.String">
+				<value>
+					SELECT alarmId AS alarmid, 
+						alarm.nodeid,
+						eventuei AS eventName, 
+						ipAddr, 
+						firstEventTime, 
+						lastEventTime, 
+						description, 
+						counter,
+						CASE
+							WHEN severity = 7 THEN 'Critical'
+							WHEN severity = 6 THEN 'Major'
+							WHEN severity = 5 THEN 'Minor'
+							WHEN severity = 4 THEN 'Warning'
+							WHEN severity = 3 THEN 'Normal'
+							WHEN severity = 2 THEN 'Cleared'
+							WHEN severity = 1 THEN 'Indeterminate'
+							ELSE 'Unknown'
+						END AS severity
+					FROM Alarms alarm
+					JOIN Node node ON node.nodeId = alarm.nodeId
+					WHERE alarmType != 2
+						AND alarm.nodeId IS NOT NULL
+						AND node.nodeType != 'D'	
+						AND alarmacktime IS NULL
+						AND alarmId NOT IN (SELECT a2.alarmid 
+						  FROM Alarms a1, Alarms a2 WHERE a1.alarmid > a2.alarmid AND a1.clearkey = a2.reductionkey)	
+				</value>
+			</list>		
+		</property>		
+	</bean>
+		
+	<bean name="OnmsQueries" class="com.realstatus.hgs.collection.QueryListEntityAccessorMapContainer">
+		<property name="entityAccessorMap">
+			<map keyClass="com.realstatus.hgs.collection.EntityAccessorTypeEnum" 
+				 valueClass="com.realstatus.hgs.collection.QueryListContainer">
+				<entry>
+					<key> </key>
+					<value><inject bean="OnmsNodeIdentityQueries"/></value>
+				</entry>
+				<entry>
+					<key>NodeDetail</key>
+					<value><inject bean="OnmsNodeDetailQueries"/></value>
+				</entry>
+				<entry>
+					<key>EndpointIdentity</key>
+					<value><inject bean="OnmsEndpointIdentityQueries"/></value>
+				</entry>
+				<entry>
+					<key>EndpointDetail</key>
+					<value><inject bean="OnmsEndpointDetailQueries"/></value>
+				</entry>
+				<entry>
+					<key>LinkIdentity</key>
+					<value><inject bean="OnmsLinkIdentityQueries"/></value>
+				</entry>
+				<entry>
+					<key>LinkDetail</key>
+					<value><inject bean="OnmsLinkDetailQueries"/></value>
+				</entry>
+				<entry>
+					<key>Alarm</key>
+					<value><inject bean="OnmsAlarmQueries"/></value>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+	<bean name="OnmsNodeIdentityRefinements" class="com.realstatus.hgs.collection.ListContainer">
+		<property name="list">
+			<list class="java.util.ArrayList" elementClass="java.lang.String">
+				<value>com.realstatus.hgs.model.refine.NodeTypeFromOIDDeterminer</value>
+				<value>com.realstatus.collector.refine.MissingIpAddressDeterminer</value>
+			</list>		
+		</property>
+	</bean>
+	
+	<bean name="OnmsNodeDetailRefinements" class="com.realstatus.hgs.collection.ListContainer">
+		<property name="list">
+			<list class="java.util.ArrayList" elementClass="java.lang.String">
+				<!-- TODO is this deprecated now? -->
+				<value>com.realstatus.collector.refine.HostnameDeterminer</value>
+			</list>		
+		</property>
+	</bean>
+	
+	<bean name="OnmsEndpointDetailRefinements" class="com.realstatus.hgs.collection.ListContainer">
+		<property name="list">
+			<list class="java.util.ArrayList" elementClass="java.lang.String">
+				<value>com.realstatus.collector.refine.NetmaskAndSubnetDeterminer</value>
+			</list>		
+		</property>
+	</bean>
+
+	<bean name="OnmsModelRefinements" class="com.realstatus.hgs.collection.EntityAccessorMapContainer">
+		<property name="entityAccessorMap">
+			<map keyClass="com.realstatus.hgs.collection.EntityAccessorTypeEnum" 
+				 valueClass="com.realstatus.hgs.collection.ListContainer">
+				<entry>
+					<key>NodeIdentity</key>
+					<value><inject bean="OnmsNodeIdentityRefinements"/></value>
+				</entry>
+				<entry>
+					<key>NodeDetail</key>
+					<value><inject bean="OnmsNodeDetailRefinements"/></value>
+				</entry>
+				<entry>
+					<key>EndpointDetail</key>
+					<value><inject bean="OnmsEndpointDetailRefinements"/></value>
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	<bean name="OpenNmsCollectorPluginDescriptor" class="com.realstatus.hgs.collection.CollectorPluginDescriptorImpl">
+				
+		<property name="datasourceName">OpenNMS</property>
+		
+		<property name="dataGatheringClass">com.realstatus.collector.OpenNmsDataGatheringExecutor</property>
+		
+		<property name="jdbcDatasource">
+			<bean name="OnmsJndiBoundJdbcDatasource" class="com.realstatus.hgs.collection.JdbcDatasource">
+				<property name="jndiName">OpenNMSDS</property>
+			</bean>
+		</property>
+		
+		<property name="processedMetricDetails">
+			<inject bean="OnmsProcessedMetricProperties"/>
+		</property>
+		
+		<property name="sqlNodeSourcedFromType">Node</property>
+		<property name="sqlEndpointSourcedFromType">Interface</property>
+		<property name="sqlLinkSourcedFromType">Link</property>
+		
+		<property name="sqlQueries">
+			<inject bean="OnmsQueries"/>
+		</property>
+		
+		<property name="refinementClasses">
+			<inject bean="OnmsModelRefinements"/>
+		</property>
+		
+		<property name="metricAccessorClass">com.realstatus.collector.metric.OnmsMetricAccessor</property>
+				
+		<property name="propertiesFileLocation">runtime.properties</property>
+		<property name="filterScriptLocation">hgfilters</property>
+		
+		<!-- Collect every other HG collection cycle -->
+		<property name="topologyCollectionFrequency">2</property>
+		
+		<property name="lifeCycleListener">
+			<bean name="OpenNmsCollectorLifeCycleListener" class="com.realstatus.collector.OpenNmsCollectorLifeCycleListener" />
+		</property>
+		
+		<demand>jboss.jca:service=DataSourceBinding,name=OpenNMSDS</demand>
+	</bean>
+		
+</deployment>

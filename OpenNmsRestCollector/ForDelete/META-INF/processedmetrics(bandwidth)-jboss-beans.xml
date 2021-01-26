@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployment xmlns="urn:jboss:bean-deployer:2.0">
+	
+	<bean name="OnmsInputBandwidth" class="com.realstatus.hgs.model.metric.normalisation.NormalisedMetricDefinition">
+		<property name="name">Input Bandwidth</property>
+		<property name="unit">%</property>
+		
+		<property name="preferredRollup">AVERAGE</property>
+		
+		<property name="strategy">
+			<bean class="com.realstatus.hgs.model.metric.normalisation.ScriptedMetricStrategy">
+				
+				<!--
+					 Performs calculation as follows:
+					 (ifOctets * 8 * 100) / ifSpeed
+				
+					 ifOctets is an average value of octets over the collection period
+				-->
+				
+				<property name="strategyTitle">Input Bandwidth</property>
+				
+				<property name="dataRequirements">
+					<bean class="com.realstatus.hgs.collection.requirements.CollectorDataRequirements">
+						<property name="metrics">
+							<list>
+								<bean class="com.realstatus.hgs.collection.requirements.RawMetricRequirement">
+									<property name="sourcedFromType">Interface</property>
+									<property name="name">ifInOctets</property>
+								</bean>
+							</list>
+						</property>
+						
+						<property name="attributes">
+							<list>
+								<bean class="com.realstatus.hgs.collection.requirements.AttributeRequirement">
+									<property name="type">Interface</property>
+									<property name="name">Interface Speed</property>
+								</bean>
+							</list>
+						</property>
+					</bean>
+				</property>
+				
+				
+				<property name="script">
+				<![CDATA[
+					function calculate(endpoint) {
+						var octets = endpoint.rawMetricTimeSeries[new DefaultMetricDescriptor('ifInOctets', $rollup)];
+						var interfaceSpeed = endpoint.attributes['Interface Speed'];
+						
+						if (interfaceSpeed == null || interfaceSpeed <= 0) {
+							return 'Interface Speed was null or <= 0';
+						}
+						if (octets == null) {
+							return 'expected value not available for bandwidth calculation';
+						}
+						
+						return octets.absolute().scale((8.0d * 100.0d) / interfaceSpeed);
+					}
+				]]>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean name="OnmsOutputBandwidth" class="com.realstatus.hgs.model.metric.normalisation.NormalisedMetricDefinition">
+		<property name="name">Output Bandwidth</property>
+		<property name="unit">%</property>
+		
+		<property name="strategy">
+			<bean class="com.realstatus.hgs.model.metric.normalisation.ScriptedMetricStrategy">
+				
+				<!--
+					 Performs calculation as follows:
+					 (ifOctets * 8 * 100) / ifSpeed
+				
+					 ifOctets is an average value of octets over the collection period
+				-->
+				
+				<property name="strategyTitle">Output Bandwidth</property>
+				
+				<property name="dataRequirements">
+					<bean class="com.realstatus.hgs.collection.requirements.CollectorDataRequirements">
+						<property name="metrics">
+							<list>
+								<bean class="com.realstatus.hgs.collection.requirements.RawMetricRequirement">
+									<property name="sourcedFromType">Interface</property>
+									<property name="name">ifOutOctets</property>
+								</bean>
+							</list>
+						</property>
+						
+						<property name="attributes">
+							<list>
+								<bean class="com.realstatus.hgs.collection.requirements.AttributeRequirement">
+									<property name="type">Interface</property>
+									<property name="name">Interface Speed</property>
+								</bean>
+							</list>
+						</property>
+					</bean>
+				</property>
+				
+				
+				<property name="script">
+				<![CDATA[
+					function calculate(endpoint) {
+						var octets = endpoint.rawMetricTimeSeries[new DefaultMetricDescriptor('ifOutOctets', $rollup)];
+						var interfaceSpeed = endpoint.attributes['Interface Speed'];
+						
+						if (interfaceSpeed == null || interfaceSpeed <= 0) {
+							return 'Interface Speed was null or <= 0';
+						}
+						if (octets == null) {
+							return 'expected value not available for bandwidth calculation';
+						}
+						
+						return octets.absolute().scale((8.0d * 100.0d) / interfaceSpeed);
+					}
+				]]>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+</deployment>

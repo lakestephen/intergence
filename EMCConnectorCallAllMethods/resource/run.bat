@@ -1,0 +1,1 @@
+"%JAVA_HOME%\bin\java.exe" -cp * com.emc.celerra.api.EMCRunner queries

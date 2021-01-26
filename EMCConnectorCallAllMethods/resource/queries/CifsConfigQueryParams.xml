@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Request>
+        <Query>
+            <CifsConfigQueryParams>
+                <MoverOrVdm mover="4" moverIdIsVdm="false" />
+            </CifsConfigQueryParams>
+        </Query>
+    </Request>
+</RequestPacket>

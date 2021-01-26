@@ -1,0 +1,60 @@
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="HyperglanceRestCollectorFramework" default="build">
+
+    <property name="build.dir" value="../.build/${ant.project.name}"/>
+    <property name="build.release.dir" value="${build.dir}"/>
+    <property name="build.release.lib.dir" value="${build.release.dir}/lib"/>
+    <property name="build.release.wrapper.dir" value="${build.release.dir}/wrapper"/>
+
+    <property name="build.staging.dir" value="${build.dir}/staging"/>
+    <property name="build.staging.compile.dir" value="${build.staging.dir}/compile"/>
+
+    <target name="build" description="Main Build for EMC Rest" depends="clean-all,copy-lib,copy-config,create-staging,compile,jar,clean-staging"/>
+
+    <target name="copy-lib">
+        <copy todir="${build.release.lib.dir}">
+            <fileset dir="lib/general"/>
+            <fileset dir="lib/spring"/>
+        </copy>
+    </target>
+
+    <target name="copy-config">
+        <copy todir="${build.release.dir}">
+            <fileset dir="config"/>
+            <fileset file="ReleaseNotes.html"/>
+            <fileset file="readme.html"/>
+        </copy>
+    </target>
+
+    <target name="create-staging">
+        <mkdir dir="${build.staging.compile.dir}"/>
+    </target>
+
+    <target name="compile">
+        <javac destdir="${build.staging.compile.dir}"  source="1.6" debug="on"
+               includeantruntime="false">
+            <src path="src"/>
+            <include name="**/*.java"/>
+            <classpath>
+                <fileset dir="${build.release.lib.dir}" includes="*.jar"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="jar">
+        <jar jarfile="${build.release.lib.dir}/${ant.project.name}.jar">
+            <fileset dir="${build.staging.compile.dir}"/>
+            <fileset dir="resource"/>
+        </jar>
+    </target>
+
+    <target name="clean-staging">
+        <echo>Clean Staging Area</echo>
+        <delete dir="${build.staging.dir}"/>
+    </target>
+
+    <target name="clean-all">
+        <echo>Clean All</echo>
+        <delete dir="${build.dir}"/>
+    </target>
+
+</project>

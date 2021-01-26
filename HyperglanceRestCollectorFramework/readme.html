@@ -1,0 +1,31 @@
+<html>
+<body>
+
+
+<h2>
+    Readme for Hyperglance Rest Framework Merged Collector
+</h2>
+
+<p>&nbsp;</p>
+<p>This version of the collectors runs as a unifide merged process. Many collectors can be set up using a discovery 'self registration' mechanisiam. It is initially configured with all four collectors, but if one or more are not required then simply delete the associated directory. The order of the collectors can be set by the xxxx.execute.order= value</p>
+<h4>Getting Started </h4>
+<ol>
+  <li>Unpack the supplied jar</li>
+  <li>Edit the <em>launch-hyperglance-rest-framework.bat </em>or <em>launch-hyperglance-rest-framework.sh</em> file, and set a <em>JAVA_HOME</em> to point to a JRE or a JDK. </li>
+  <li>Edit the <em>hyperglance-rest-framework.properties </em>file to configure the connection to the Hyperglance Rest API. See notes in the file for detailed information.</li>
+  <li>Remove the collectors that are not required by simply deleting the appropriate directory. (NOTE: There will still be a reference on the classpath in  <em>launch-hyperglance-rest-framework.bat </em>or <em>launch-hyperglance-rest-framework.sh</em> but that will just be ignored.</li>
+  <li>Edit the property file in each of the individual collectors to provide the collector specific properties. 
+    <ul>
+      <li>Take care if cutting and pasting from a previous version as they can change every version. </li>
+      <li>Each collector can set the individual collector name that is placed into the 'origin' field</li>
+      <li>Each collector can have an execute order set through xxxx.execute.order= value. The collectors are then executed in ascending order. This becomes important when you have refinement collectors that need to work with the whole model. </li></ul>
+  </li>
+  <li>NOTE: The VMWare instance also has the standalone credentials app that uses the same propeties file.</li>
+  <li>Launch either the <em>launch-hyperglance-rest-framework.bat </em>or <em>launch-hyperglance-rest-framework.sh</em> file</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>Steve Lake</strong></p>
+<p>&nbsp;</p>
+</body>
+</html>

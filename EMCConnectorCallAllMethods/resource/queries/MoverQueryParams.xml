@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api">
+    <Request>
+        <Query>
+            <MoverQueryParams mover="2" >
+                <AspectSelection movers="true" moverDnsDomains="true"
+                                 moverInterfaces="true"
+                                 moverNetworkDevices="true" moverNisDomains="true"
+                                 moverRoutes="true"
+                                 moverStatuses="true" />
+            </MoverQueryParams>
+        </Query>
+    </Request>
+</RequestPacket>

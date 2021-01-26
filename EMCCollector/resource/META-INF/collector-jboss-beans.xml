@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployment xmlns="urn:jboss:bean-deployer:2.0">
+	
+	<bean name="EmcPerformanceDataCollectionProperties" class="com.realstatus.hgs.collection.PerformanceDataCollectionProperties">
+		<property name="fetchClass">com.intergence.hgs.emc.collector.EmcPerformanceFetcher</property>
+		<property name="collectionClass">com.intergence.hgs.emc.collector.EmcPerformanceExecutor</property>
+		<property name="collectionEntityBatchSize">100</property>
+	</bean>	
+	
+	<bean name="EmcCollectorPluginDescriptor" class="com.realstatus.hgs.collection.CollectorPluginDescriptorImpl">
+		<property name="datasourceName">EMC</property>
+		
+		<property name="performanceDataCollectionProperties">
+			<inject bean="EmcPerformanceDataCollectionProperties"/>
+		</property>
+		
+		<property name="discoveryClass">com.intergence.hgs.emc.collector.EmcTopologyDiscoverer</property>
+	</bean>
+	
+</deployment>

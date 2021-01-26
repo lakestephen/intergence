@@ -1,0 +1,207 @@
+
+
+D:\EMC TEST>run
+
+        D:\EMC TEST>"C:\Program Files\Java\jdk1.7.0_15\bin\java.exe" -cp * com.emc.celerra.api.EMCRunner queries
+        20:13:11,213 INFO  [main                     ] api.EMCApp                     - Connecting to CelerraConnector
+        20:13:12,429 INFO  [main                     ] api.EMCApp                     - Finding files in [queries]
+        20:13:12,431 INFO  [main                     ] api.EMCApp                     - Running round robin query for the following calls [[queries\ClariionDeviceQueryParams.xml, queries\ClariionDiskQueryParams.xml, queries\ClariionGeneralConfigQueryParams.xml, queries\ClariionRaidGroupQueryParams.xml, queries\ClariionSpQueryParams.xml]]
+        20:13:12,438 INFO  [main                     ] api.EMCApp                     -
+        20:13:12,439 INFO  [main                     ] api.EMCApp                     -
+        20:13:12,439 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\ClariionDeviceQueryParams.xml ================
+        20:13:12,440 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api"
+               apiVersion="V1_1">
+    <RequestEx>
+        <Query>
+            <ClariionDeviceQueryParams clariion="1">
+                <AspectSelection status="true" config="true"></AspectSelection>
+                <deviceRange start="A" size="10"></deviceRange>
+            </ClariionDeviceQueryParams>
+        </Query>
+    </RequestEx>
+</RequestPacket>
+        ========== Celerra Response ==========
+        statusCode=200  statusString=OK
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+<ResponseEx/>
+</ResponsePacket>
+
+        20:13:12,725 INFO  [main                     ] api.EMCApp                     -
+        20:13:12,726 INFO  [main                     ] api.EMCApp                     -
+        20:13:12,726 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\ClariionDiskQueryParams.xml ================
+        20:13:12,727 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api"
+               apiVersion="V1_1">
+<RequestEx>
+    <Query>
+        <ClariionDiskQueryParams clariion="1"></ClariionDiskQueryParams>
+    </Query>
+</RequestEx>
+</RequestPacket>
+        ========== Celerra Response ==========
+        statusCode=200  statusString=OK
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+<ResponseEx>
+    <ClariionDiskConfig bus="0" enclosureNumber="0" diskNumber="0" state="unbound" vendorId="HITACHI" productId="HUC10906 CLAR600" revision="C430" serialNumber="KSJUKBTR" capacity="1125767168" usedCapacity="0" remappedBlocks="18446744073709551615" storage="1" name="0_0_0"/>
+    <ClariionDiskConfig bus="0" enclosureNumber="0" diskNumber="1" state="unbound" vendorId="HITACHI" productId="HUC10906 CLAR600" revision="C430" serialNumber="KSJUJP2R" capacity="1125767168" usedCapacity="0" remappedBlocks="18446744073709551615" storage="1" name="0_0_1"/>
+    <ClariionDiskConfig bus="0" enclosureNumber="0" diskNumber="2" state="unbound" vendorId="HITACHI" productId="HUC10906 CLAR600" revision="C430" serialNumber="KSJ7S9BR" capacity="1125767168" usedCapacity="0" remappedBlocks="18446744073709551615" storage="1" name="0_0_2"/>
+    <ClariionDiskConfig bus="0" enclosureNumber="0" diskNumber="3" state="unbound" vendorId="HITACHI" productId="HUC10906 CLAR600" revision="C430" serialNumber="KSJGJLJJ" capacity="1125767168" usedCapacity="0" remappedBlocks="18446744073709551615" storage="1" name="0_0_3"/>
+    <ClariionDiskConfig bus="0" enclosureNumber="0" diskNumber="4" state="enabled" vendorId="HITACHI" productId="HUC10906 CLAR600" revision="C430" serialNumber="KSJG084J" capacity="1125767168" usedCapacity="562838272" remappedBlocks="18446744073709551615" storage="1" name="0_0_4"/>
+    <ClariionDiskConfig bus="0" enclosureNumber="0" diskNumber="5" state="enabled" vendorId="HITACHI" productId="HUC10906 CLAR600" revision="C430" serialNumber="KSJUKBHR" capacity="1125767168" usedCapacity="562838272" remappedBlocks="18446744073709551615" storage="1" name="0_0_5"/>
+    <ClariionDiskConfig bus="0" enclosureNumber="0" diskNumber="6" state="enabled" vendorId="HITACHI" productId="HUC10906 CLAR600" revision="C430" serialNumber="KSJUVRLR" capacity="1125767168" usedCapacity="892547891" remappedBlocks="18446744073709551615" storage="1" name="0_0_6"/>
+    <ClariionDiskConfig bus="0" enclosureNumber="0" diskNumber="7" state="enabled" vendorId="HITACHI" productId="HUC10906 CLAR600" revision="C430" serialNumber="KSJGPUTJ" capacity="1125767168" usedCapacity="892547891" remappedBlocks="18446744073709551615" storage="1" name="0_0_7"/>
+    <ClariionDiskConfig bus="0" enclosureNumber="0" diskNumber="8" state="enabled" vendorId="HITACHI" productId="HUC10906 CLAR600" revision="C430" serialNumber="KSJUNLER" capacity="1125767168" usedCapacity="892547891" remappedBlocks="18446744073709551615" storage="1" name="0_0_8"/>
+    <ClariionDiskConfig bus="0" enclosureNumber="0" diskNumber="9" state="enabled" vendorId="HITACHI" productId="HUC10906 CLAR600" revision="C430" serialNumber="KSJUK0MR" capacity="1125767168" usedCapacity="892547891" remappedBlocks="18446744073709551615" storage="1" name="0_0_9"/>
+    <ClariionDiskConfig bus="0" enclosureNumber="0" diskNumber="10" state="enabled" vendorId="HITACHI" productId="HUC10906 CLAR600" revision="C430" serialNumber="KSJUKKDR" capacity="1125767168" usedCapacity="892547891" remappedBlocks="18446744073709551615" storage="1" name="0_0_10"/>
+    <ClariionDiskConfig bus="0" enclosureNumber="0" diskNumber="11" state="unbound" vendorId="HITACHI" productId="HUC10906 CLAR600" revision="C430" serialNumber="KSJGNVZJ" capacity="1125767168" usedCapacity="0" remappedBlocks="18446744073709551615" storage="1" name="0_0_11"/>
+</ResponseEx>
+</ResponsePacket>
+
+        20:13:13,025 INFO  [main                     ] api.EMCApp                     -
+        20:13:13,026 INFO  [main                     ] api.EMCApp                     -
+        20:13:13,027 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\ClariionGeneralConfigQueryParams.xml ================
+        20:13:13,027 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api"
+               apiVersion="V1_1">
+<RequestEx>
+    <Query>
+        <ClariionGeneralConfigQueryParams
+                clariion="1"></ClariionGeneralConfigQueryParams>
+    </Query>
+</RequestEx>
+</RequestPacket>
+        ========== Celerra Response ==========
+        statusCode=200  statusString=OK
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+<ResponseEx>
+    <ClariionConfig name="CKM00140700163" uid="50060160886025fc0000000000000000" modelNumber="Model-VNX5200" modelType="rackmount" clariionDevices="6" physicalDisks="12" visibleDevices="4" raidGroups="2" storageGroups="2" snapshot="1396552433" cachePageSize="8" lowWaterMark="-1.0" highWaterMark="-1.0" unassignedCachePages="-1" storage="1"/>
+</ResponseEx>
+</ResponsePacket>
+
+        20:13:13,303 INFO  [main                     ] api.EMCApp                     -
+        20:13:13,307 INFO  [main                     ] api.EMCApp                     -
+        20:13:13,310 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\ClariionRaidGroupQueryParams.xml ================
+        20:13:13,314 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api"
+               apiVersion="V1_1">
+<RequestEx>
+    <Query>
+        <ClariionRaidGroupQueryParams clariion="1" raidGroup="200"/>
+    </Query>
+</RequestEx>
+</RequestPacket>
+        ========== Celerra Response ==========
+        statusCode=200  statusString=OK
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+<ResponseEx/>
+</ResponsePacket>
+
+        20:13:13,610 INFO  [main                     ] api.EMCApp                     -
+        20:13:13,614 INFO  [main                     ] api.EMCApp                     -
+        20:13:13,617 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\ClariionSpQueryParams.xml ================
+        20:13:13,622 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api"
+               apiVersion="V1_1">
+<RequestEx>
+    <Query>
+        <ClariionSpQueryParams clariion="1">
+            <AspectSelection status="true" config="true"></AspectSelection>
+        </ClariionSpQueryParams>
+    </Query>
+</RequestEx>
+</RequestPacket>
+        ========== Celerra Response ==========
+        statusCode=200  statusString=OK
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+<ResponseEx>
+    <ClariionSPConfig signature="3686624" microcodeRev="05.33.000.5.051" serialNumber="CF2BN140400224" promRev="7.20.00" agentRev="7.33.2 (0.51)" physicalMemorySize="16384" systemBufferSize="-1" readCacheSize="-1" writeCacheSize="-1" freeMemorySize="-1" raid3MemorySize="-1" storage="1" id="A">
+        <Port portNumber="0" portUid="50060160886025fc50060160086025fc" switchUid="00000000000000000000000000000000"/>
+        <Port portNumber="1" portUid="50060160886025fc50060161086025fc" switchUid="00000000000000000000000000000000"/>
+        <Port portNumber="2" portUid="50060160886025fc50060162086025fc" switchUid="00000000000000000000000000000000"/>
+        <Port portNumber="3" portUid="50060160886025fc50060163086025fc" switchUid="00000000000000000000000000000000"/>
+        <Port portNumber="8" portUid="50060160886025fc50060160086425fc" switchUid="00000000000000000000000000000000"/>
+        <Port portNumber="9" portUid="50060160886025fc50060161086425fc" switchUid="00000000000000000000000000000000"/>
+        <Port portNumber="10" portUid="50060160886025fc50060162086425fc" switchUid="00000000000000000000000000000000"/>
+        <Port portNumber="11" portUid="50060160886025fc50060163086425fc" switchUid="00000000000000000000000000000000"/>
+        <Port portNumber="4" portUid="00000000000000000000000000000000" switchUid="00000000000000000000000000000000"/>
+        <Port portNumber="5" portUid="00000000000000000000000000000000" switchUid="00000000000000000000000000000000"/>
+        <Port portNumber="6" portUid="00000000000000000000000000000000" switchUid="00000000000000000000000000000000"/>
+        <Port portNumber="7" portUid="00000000000000000000000000000000" switchUid="00000000000000000000000000000000"/>
+    </ClariionSPConfig>
+    <ClariionSpStatus readCacheState="enabled" writeCacheState="enabled" state="operational" storage="1" id="A">
+        <Port portNumber="0" linkStatus="up" portStatus="on-line"/>
+        <Port portNumber="1" linkStatus="down" portStatus="disabled"/>
+        <Port portNumber="2" linkStatus="down" portStatus="disabled"/>
+        <Port portNumber="3" linkStatus="down" portStatus="disabled"/>
+        <Port portNumber="8" linkStatus="up" portStatus="on-line"/>
+        <Port portNumber="9" linkStatus="up" portStatus="on-line"/>
+        <Port portNumber="10" linkStatus="down" portStatus="disabled"/>
+        <Port portNumber="11" linkStatus="down" portStatus="disabled"/>
+        <Port portNumber="4" linkStatus="down" portStatus="on-line"/>
+        <Port portNumber="5" linkStatus="down" portStatus="on-line"/>
+        <Port portNumber="6" linkStatus="down" portStatus="on-line"/>
+        <Port portNumber="7" linkStatus="down" portStatus="on-line"/>
+    </ClariionSpStatus>
+    <ClariionSPConfig signature="3686616" microcodeRev="05.33.000.5.051" serialNumber="CF2BN140400216" promRev="7.20.00" agentRev="7.33.2 (0.51)" physicalMemorySize="16384" systemBufferSize="-1" readCacheSize="-1" writeCacheSize="-1" freeMemorySize="-1" raid3MemorySize="-1" storage="1" id="B">
+        <Port portNumber="4" portUid="00000000000000000000000000000000" switchUid="00000000000000000000000000000000"/>
+        <Port portNumber="5" portUid="00000000000000000000000000000000" switchUid="00000000000000000000000000000000"/>
+        <Port portNumber="6" portUid="00000000000000000000000000000000" switchUid="00000000000000000000000000000000"/>
+        <Port portNumber="7" portUid="00000000000000000000000000000000" switchUid="00000000000000000000000000000000"/>
+        <Port portNumber="0" portUid="50060160886025fc50060168086025fc" switchUid="00000000000000000000000000000000"/>
+        <Port portNumber="1" portUid="50060160886025fc50060169086025fc" switchUid="00000000000000000000000000000000"/>
+        <Port portNumber="2" portUid="50060160886025fc5006016a086025fc" switchUid="00000000000000000000000000000000"/>
+        <Port portNumber="3" portUid="50060160886025fc5006016b086025fc" switchUid="00000000000000000000000000000000"/>
+        <Port portNumber="8" portUid="50060160886025fc50060168086425fc" switchUid="00000000000000000000000000000000"/>
+        <Port portNumber="9" portUid="50060160886025fc50060169086425fc" switchUid="00000000000000000000000000000000"/>
+        <Port portNumber="10" portUid="50060160886025fc5006016a086425fc" switchUid="00000000000000000000000000000000"/>
+        <Port portNumber="11" portUid="50060160886025fc5006016b086425fc" switchUid="00000000000000000000000000000000"/>
+    </ClariionSPConfig>
+    <ClariionSpStatus readCacheState="enabled" writeCacheState="enabled" state="operational" storage="1" id="B">
+        <Port portNumber="4" linkStatus="down" portStatus="on-line"/>
+        <Port portNumber="5" linkStatus="down" portStatus="on-line"/>
+        <Port portNumber="6" linkStatus="down" portStatus="on-line"/>
+        <Port portNumber="7" linkStatus="down" portStatus="on-line"/>
+        <Port portNumber="0" linkStatus="up" portStatus="on-line"/>
+        <Port portNumber="1" linkStatus="down" portStatus="disabled"/>
+        <Port portNumber="2" linkStatus="down" portStatus="disabled"/>
+        <Port portNumber="3" linkStatus="down" portStatus="disabled"/>
+        <Port portNumber="8" linkStatus="up" portStatus="on-line"/>
+        <Port portNumber="9" linkStatus="up" portStatus="on-line"/>
+        <Port portNumber="10" linkStatus="down" portStatus="disabled"/>
+        <Port portNumber="11" linkStatus="down" portStatus="disabled"/>
+    </ClariionSpStatus>
+</ResponseEx>
+</ResponsePacket>
+
+        20:13:15,144 INFO  [main                     ] api.EMCApp                     - Running round robin query for the following calls [[queries\ClariionDeviceQueryParams.xml, queries\ClariionDiskQueryParams.xml, queries\ClariionGeneralConfigQueryParams.xml, queries\ClariionRaidGroupQueryParams.xml, queries\ClariionSpQueryParams.xml]]
+        20:13:15,163 INFO  [main                     ] api.EMCApp                     -
+        20:13:15,188 INFO  [main                     ] api.EMCApp                     -
+        20:13:15,208 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\ClariionDeviceQueryParams.xml ================
+        20:13:15,235 INFO  [main                     ] api.EMCApp                     - <?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api"
+               apiVersion="V1_1">
+<RequestEx>
+    <Query>
+        <ClariionDeviceQueryParams clariion="1">
+            <AspectSelection status="true" config="true"></AspectSelection>
+            <deviceRange start="A" size="10"></deviceRange>
+        </ClariionDeviceQueryParams>
+    </Query>
+</RequestEx>
+</RequestPacket>
+        ========== Celerra Response ==========
+        statusCode=200  statusString=OK
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponsePacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+<ResponseEx/>
+</ResponsePacket>
+
+        20:13:15,873 INFO  [main                     ] api.EMCApp                     -
+        20:13:15,896 INFO  [main                     ] api.EMCApp                     -
+        20:13:15,919 INFO  [main                     ] api.EMCApp                     - =============== Request: queries\ClariionDiskQueryParams.xml ================

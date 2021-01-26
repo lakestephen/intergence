@@ -1,0 +1,91 @@
+{
+  "nodes": [
+    {
+      "key": "Server12",
+      "type": "server",
+      "attributes": [
+        {
+          "name": "location",
+          "value": "london"
+        },
+        {
+          "name": "ip",
+          "value": "1.2.3.4"
+        }
+      ]
+    },
+    {
+      "key": "router888",
+      "type": "router",
+      "attributes": [
+        {
+          "name": "manufacturer",
+          "value": "HP"
+        },
+        {
+          "name": "ip",
+          "value": "5.6.7.8"
+        }
+      ]
+    },
+    {
+      "key": "gathering_cloud",
+      "type": "cloud",
+      "attributes": [
+        {
+          "name": "gathering",
+          "value": "cloud"
+        }
+      ]
+    }
+  ],
+  "endpoints": [
+    {
+      "nodeKey": "Server12",
+      "key": "router888_Endpoint",
+      "type": "socket",
+      "attributes": [
+        {
+          "name": "ip",
+          "value": "5.6.7.8"
+        }
+      ]
+    },
+    {
+      "nodeKey": "router888",
+      "key": "Server12_Endpoint",
+      "type": "NIC",
+      "attributes": [
+        {
+          "name": "ip",
+          "value": "5.6.7.8"
+        }
+      ]
+    },
+    {
+      "nodeKey": "gathering_cloud",
+      "key": "gathering_cloud_Endpoint",
+      "type": "cloud",
+      "attributes": [
+        {
+          "name": "gathering",
+          "value": "cloud"
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "endpointAKey": "router888_Endpoint",
+      "endpointBKey": "Server12_Endpoint",
+      "key": "serverRouterLink",
+      "type": "wire",
+      "attributes": [
+        {
+          "name": "length",
+          "value": "20Meters"
+        }
+      ]
+    }
+  ]
+}

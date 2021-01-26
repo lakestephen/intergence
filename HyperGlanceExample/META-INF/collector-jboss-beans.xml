@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployment xmlns="urn:jboss:bean-deployer:2.0">
+	
+	<bean name="AcmePerformanceDataCollectionProperties" class="com.realstatus.hgs.collection.PerformanceDataCollectionProperties">
+		<property name="fetchClass">com.acme.metrics.TimeSeriesMetricsFetcher</property>	
+		<property name="collectionClass">com.acme.metrics.MetricsDiscoverer</property>
+		<property name="collectionEntityBatchSize">100</property>
+	</bean>	
+	
+	<bean name="AcmeCollectorPluginDescriptor" class="com.realstatus.hgs.collection.CollectorPluginDescriptorImpl">		
+		<property name="datasourceName">ACME</property>
+		
+		<property name="performanceDataCollectionProperties">
+			<inject bean="AcmePerformanceDataCollectionProperties"/>
+		</property>
+		
+		<property name="discoveryClass">com.acme.TopologyDiscoverer</property>
+	</bean>
+	
+</deployment>

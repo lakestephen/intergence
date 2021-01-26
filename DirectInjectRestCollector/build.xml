@@ -1,0 +1,63 @@
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="DirectInjectRestCollector" default="build">
+
+    <property name="build.framework.dir" value="../.build/HyperglanceRestCollectorFramework"/>
+    <property name="build.framework.lib.dir" value="${build.framework.dir}/lib"/>
+
+    <property name="build.dir" value="${build.framework.dir}/${ant.project.name}"/>
+    <property name="build.release.dir" value="${build.dir}"/>
+    <property name="build.release.lib.dir" value="${build.release.dir}/lib"/>
+    <property name="build.release.wrapper.dir" value="${build.release.dir}/wrapper"/>
+
+    <property name="build.staging.dir" value="${build.dir}/staging"/>
+    <property name="build.staging.compile.dir" value="${build.staging.dir}/compile"/>
+
+    <target name="build" description="Main Build for DirectInject Rest" depends="clean-all,copy-lib,copy-config,create-staging,compile,jar,clean-staging"/>
+
+    <target name="copy-lib">
+        <copy todir="${build.release.lib.dir}">
+            <fileset dir="lib/general"/>
+        </copy>
+    </target>
+
+    <target name="copy-config">
+        <copy todir="${build.release.dir}">
+            <fileset dir="config"/>
+            <fileset file="ReleaseNotes.html"/>
+        </copy>
+    </target>
+
+    <target name="create-staging">
+        <mkdir dir="${build.staging.compile.dir}"/>
+    </target>
+
+    <target name="compile">
+        <javac destdir="${build.staging.compile.dir}"  source="1.6" debug="on"
+               includeantruntime="false">
+            <src path="../HyperglanceRestCollectorFramework/src"/>
+            <src path="src"/>
+            <include name="**/*.java"/>
+            <classpath>
+                <fileset dir="${build.release.lib.dir}" includes="*.jar"/>
+                <fileset dir="${build.framework.lib.dir}" includes="*.jar"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="jar">
+        <jar jarfile="${build.release.lib.dir}/${ant.project.name}.jar">
+            <fileset dir="${build.staging.compile.dir}"/>
+            <fileset dir="resource"/>
+        </jar>
+    </target>
+
+    <target name="clean-staging">
+        <echo>Clean Staging Area</echo>
+        <delete dir="${build.staging.dir}"/>
+    </target>
+
+    <target name="clean-all">
+        <echo>Clean All</echo>
+        <delete dir="${build.dir}"/>
+    </target>
+
+</project>

@@ -1,0 +1,72 @@
+<html>
+<body>
+
+
+<h2>
+    Release Notes for Vmware Rest Collector
+</h2>
+
+<table cellpadding="5" cellspacing="0" style="border-collapse:collapse">
+  <tr>
+    <th width="160" style="border:1px solid #000000">Release</th>
+    <th width="130" style="border:1px solid #000000">Date</th>
+    <th width="400" style="border:1px solid #000000">Notes</th>
+  </tr>
+  <tr>
+    <td style="border:1px solid #000000">VmwareRest-0.1.zip</td>
+    <td style="border:1px solid #000000">30 January 2015</td>
+    <td style="border:1px solid #000000">
+        Initial Release. <br>
+        At the moment the collector is not writing to hyperglance, but logging actions through the common framework that I have set up.<br>
+    </td>
+  </tr>
+  <tr>
+    <td style="border:1px solid #000000">VmwareRest-0.2.zip</td>
+    <td style="border:1px solid #000000">4 February 2015</td>
+    <td style="border:1px solid #000000"> Added Linux .sh scripts for starting. <br>
+    Target Java verison = 1.6.
+    </td>
+  </tr>
+
+    <tr>
+        <td style="border:1px solid #000000">VmwareRestCollector-0.3.zip</td>
+        <td style="border:1px solid #000000">9 February 2015</td>
+        <td style="border:1px solid #000000"> Correct issue with properties file being supplied in the jar and separately. The one in the jar was overriding any changes to the esposed one.
+        </td>
+    </tr>
+    <tr>
+        <td style="border:1px solid #000000">VmwareRestCollector-0.4.zip</td>
+        <td style="border:1px solid #000000">7 April 2015</td>
+        <td style="border:1px solid #000000"> Work with standard rest framework.
+        </td>
+    </tr>
+
+    <tr>
+        <td style="border:1px solid #000000">VmwareRestCollector-0.5.zip</td>
+        <td style="border:1px solid #000000">12 April 2015</td>
+        <td style="border:1px solid #000000">Add support for creating and dropping the credentials database.<br>
+            Add better logging of unhandled exceptions<br>
+            Fix bug where the node and endpoint were swapped.<br>
+            Increase Memory to 128M<br>
+            Ensure duplicate topology can't be added. <br>
+        </td>
+    </tr>
+
+    <tr>
+        <td style="border:1px solid #000000">VmwareRestCollector-0.6.zip</td>
+        <td style="border:1px solid #000000">13 April 2015</td>
+        <td style="border:1px solid #000000">Add request timeout to calls to the HG rest service.  <br>
+        </td>
+    </tr>
+
+    <tr>
+        <td style="border:1px solid #000000">VmwareRestCollector-0.7</td>
+        <td style="border:1px solid #000000">15 September 2015</td>
+        <td style="border:1px solid #000000">
+            Transition to merged processing, allowing linking of the nodes from the different models even when using the limited functionality of the Rest API V1.0. <br>
+    </tr>
+
+</table>
+
+</body>
+</html>

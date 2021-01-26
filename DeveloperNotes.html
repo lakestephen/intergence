@@ -1,0 +1,199 @@
+<html>
+<body>
+
+<style>
+    h1 {text-decoration: underline}
+    h2 {color: gray; }
+    p {margin-left: 20px;}
+    sup {color: gray; }
+</style>
+
+
+<h1>
+    Developer Notes for EMC Hyperglance Collector.
+</h1>
+
+
+<h2>
+    Target Audience.
+</h2>
+
+<p>
+    This document's target audience is any future developer that need to maintain / extend this implementation of
+    a Hyperglance collector, connecting to the EMD system.
+</p>
+
+<h2>
+    Project Structure.
+</h2>
+
+<p>
+    There are three relevant projects:
+</p>
+
+<ul>
+    <li><b>EMCCollector</b> The main project containing the code for building the ear file. The assumption is that jar
+        files under the <i>lib</i> directory will be available on the running app server. This code uses dom4j-1.6.1.jar
+        for extracting the required information from the celerra response XML  </li>
+    <li><b>EMCConnectorCallAllMethods</b> A test project that tests all the calls to EMC to analise the response when developing</li>
+    <li><b>EMCConnectorDaoTest</b> A test project that tests calls to the EMC service at the DAO level. This was only
+        developed because I was unable to run the VPN connection on the same machine as the Linux virtual machine.
+        Therefore it allowed the testing of the EMC services over VPN.</li>
+</ul>
+
+
+<h2>
+    Building the project
+</h2>
+
+<p>
+    The EMC system does not provide an API jar. Instead, they provide reference implementation SRC of their connection API documentation.
+    The reference implementation is considered production standard, so it has been included at code level in this project under the package <i>com.emc.celerra.api.connector.client;</i>
+</p>
+<p>
+    The project is packaged with .iml files and a root .ipr file. This can be run with the community edition of IntelliJ IDEA if a commercial version is unavailable.
+    The EMCCollector.iml file includes a artifact build configuration for <i>EMCCollector.ear</i>, and can be built from <i>[BUILD] > [Build Artifacts] </i>
+    The general architecture is that the EMC calls are wrapped in DAO calls. The DAO calls are used within the callbacks from the <i>DiscoveryExecutor</i> and <i>PerformanceExecutor</i>
+</p>
+
+<h2>
+    EMC Functions, and how they are used.
+</h2>
+
+<p>
+<table cellpadding="5" cellspacing="0" style="border-collapse:collapse">
+    <tr>
+        <th width="160" style="border:1px solid #DDDDDD">EMC Call</th>
+        <th width="130" style="border:1px solid #DDDDDD">DAO wrapper</th>
+        <th width="130" style="border:1px solid #DDDDDD">Notes</th>
+    </tr>
+    <tr>
+        <td style="border:1px solid #DDDDDD">&lt;CelerraSystemQueryParams /&gt;</td>
+        <td style="border:1px solid #DDDDDD">CelerraEmcDao::getSystemInfo();</td>
+        <td style="border:1px solid #DDDDDD">Used, along with getGeneralConfig() and getControlStation() to retrieve the details of the main installation</td>
+    </tr>
+    <tr>
+        <td style="border:1px solid #DDDDDD">&lt;ClariionGeneralConfigQueryParams /&gt;</td>
+        <td style="border:1px solid #DDDDDD">CelerraEmcDao::getGeneralConfig();</td>
+        <td style="border:1px solid #DDDDDD">Used, along with getSystemInfo() and getControlStation() to retrieve the details of the main installation</td>
+    </tr>
+    <tr>
+        <td style="border:1px solid #DDDDDD">&lt;ControlStationQueryParams /&gt;</td>
+        <td style="border:1px solid #DDDDDD">CelerraEmcDao::getControlStation();</td>
+        <td style="border:1px solid #DDDDDD">Used, along with getGeneralConfig() and getSystemInfo() to retrieve the details of the main installation</td>
+    </tr>
+    <tr>
+        <td style="border:1px solid #DDDDDD">&lt;ClariionDiskQueryParams /&gt;</td>
+        <td style="border:1px solid #DDDDDD">CelerraEmcDao::getAllDisks();</td>
+        <td style="border:1px solid #DDDDDD">Used to enumerate all the disks in the system</td>
+    </tr>
+    <tr>
+        <td style="border:1px solid #DDDDDD">&lt;ClariionRaidGroupQueryParams /&gt;</td>
+        <td style="border:1px solid #DDDDDD">CelerraEmcDao::getAllRaidGroups();</td>
+        <td style="border:1px solid #DDDDDD">Used to enumerate all the raid groups in the system</td>
+    </tr>
+    <tr>
+        <td style="border:1px solid #DDDDDD">&lt;ClariionSpQueryParams /&gt;</td>
+        <td style="border:1px solid #DDDDDD">CelerraEmcDao::getAllStorageProcessors();</td>
+        <td style="border:1px solid #DDDDDD">Used to enumerate all the storage processors in the system</td>
+    </tr>
+</table>
+
+</p>
+
+
+<h2>
+    Property file configuration
+</h2>
+
+
+<p>
+    There is a <i>config.properties</i> file that can be used to configure the collector.
+</p>
+
+<p>
+<table cellpadding="5" cellspacing="0" style="border-collapse:collapse">
+    <tr>
+        <th width="160" style="border:1px solid #DDDDDD">Property</th>
+        <th width="160" style="border:1px solid #DDDDDD">Default</th>
+        <th width="130" style="border:1px solid #DDDDDD">Usage</th>
+    </tr>
+    <tr>
+        <td style="border:1px solid #DDDDDD"> emc.usecanneddata</td>
+        <td style="border:1px solid #DDDDDD">false</td>
+        <td style="border:1px solid #DDDDDD">When set to true, will use some simple canned data, allowing the collector to function without a
+            Celerra Control station system. This is mainly used for testing, but could also be used for a simple demonstration</td>
+    </tr>
+    <tr>
+        <td style="border:1px solid #DDDDDD">emc.connection.host</td>
+        <td style="border:1px solid #DDDDDD">10.0.1.77</td>
+        <td style="border:1px solid #DDDDDD">Host name or IP address of the Celerra Control Station host</td>
+    </tr>
+    <tr>
+        <td style="border:1px solid #DDDDDD">emc.connection.port</td>
+        <td style="border:1px solid #DDDDDD">443</td>
+        <td style="border:1px solid #DDDDDD"> Port number of the Celerra Control Station (Normally 443, unless Celerra Control Station reconfigured to use another port)</td>
+    </tr>
+    <tr>
+        <td style="border:1px solid #DDDDDD">emc.connection.proxy.host</td>
+        <td style="border:1px solid #DDDDDD"></td>
+        <td style="border:1px solid #DDDDDD">Proxy host name or IP address if proxy tunneling is desired, otherwise blank</td>
+    </tr>
+    <tr>
+        <td style="border:1px solid #DDDDDD">emc.connection.proxy.port</td>
+        <td style="border:1px solid #DDDDDD">0</td>
+        <td style="border:1px solid #DDDDDD">Proxy host port number if proxy tunneling is desired, otherwise 0</td>
+    </tr>
+    <tr>
+        <td style="border:1px solid #DDDDDD">emc.connection.username</td>
+        <td style="border:1px solid #DDDDDD">nasadmin</td>
+        <td style="border:1px solid #DDDDDD">User name with which to login into control station</td>
+    </tr>
+    <tr>
+        <td style="border:1px solid #DDDDDD">emc.connection.password</td>
+        <td style="border:1px solid #DDDDDD">nasadmin</td>
+        <td style="border:1px solid #DDDDDD">User password with which to login into control station</td>
+    </tr>
+    <tr>
+        <td style="border:1px solid #DDDDDD">emc.manager.threadcount</td>
+        <td style="border:1px solid #DDDDDD">1</td>
+        <td style="border:1px solid #DDDDDD"> Control the number of concurrent threads that the EmcConnectorManager uses to connect to the Celerra Control Station
+             This is normally set to 1, unless there are throughput issues. Be aware that the Celerra Control Station can fail
+             under concurrent thread load.</td>
+    </tr>
+    <tr>
+        <td style="border:1px solid #DDDDDD">emc.manager.timeout.seconds</td>
+        <td style="border:1px solid #DDDDDD">30</td>
+        <td style="border:1px solid #DDDDDD">The timeout when making calls to Celerra Control Station. This is normally set to 30. After this time, it is
+            considered a dead call.</td>
+    </tr>
+</table>
+
+</p>
+
+
+<h2>
+    Contact Details
+</h2>
+
+
+<p>
+    Stephen Lake
+    </p>
+<p>
+    Mobile: 07765 704142
+</p>
+<p>
+    Mail: stephen@concurrentperformance.com
+</p>
+
+<p>
+    <sup>
+        <i>
+            Last updated 17th June 2014
+        </i>
+    </sup>
+</p>
+
+</body>
+</html>

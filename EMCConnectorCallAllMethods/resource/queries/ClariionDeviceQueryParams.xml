@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api"
+               apiVersion="V1_1">
+    <RequestEx>
+        <Query>
+            <ClariionDeviceQueryParams clariion="1">
+                <AspectSelection status="true" config="true"></AspectSelection>
+                <deviceRange start="A" size="10"></deviceRange>
+            </ClariionDeviceQueryParams>
+        </Query>
+    </RequestEx>
+</RequestPacket>

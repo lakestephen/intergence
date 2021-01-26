@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classloading xmlns="urn:jboss:classloading:1.0"
+              name="opennmscollector.ear"
+              domain="opennmscollectorClassloadingDomain"
+              parent-domain="DefaultDomain"
+              import-all="true"
+			  parent-first="false">
+
+</classloading>

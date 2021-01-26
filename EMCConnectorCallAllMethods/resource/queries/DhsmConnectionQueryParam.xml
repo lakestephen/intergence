@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+    <RequestEx>
+        <Query>
+            <DhsmConnectionQueryParams>
+                <AspectSelection connectionConfig="true"></AspectSelection>
+            </DhsmConnectionQueryParams>
+        </Query>
+    </RequestEx>
+</RequestPacket>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datasources>
+
+  <local-tx-datasource>
+    <jndi-name>OpenNMSDS</jndi-name>
+
+    <connection-url>jdbc:postgresql://@DB_HOST@:@DB_PORT@/opennms</connection-url>
+    
+    <driver-class>org.postgresql.Driver</driver-class>
+    
+    <user-name>@OPENNMS_DB_USER@</user-name>
+    <password>@OPENNMS_DB_PASSWORD@</password>
+    
+    <min-pool-size>10</min-pool-size>
+    <max-pool-size>100</max-pool-size>
+    
+    <prepared-statement-cache-size>50</prepared-statement-cache-size>
+        
+  </local-tx-datasource>
+  
+</datasources>

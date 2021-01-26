@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployment xmlns="urn:jboss:bean-deployer:2.0">
+	
+	<bean name="OnmsCPU" class="com.realstatus.hgs.model.metric.normalisation.NormalisedMetricDefinition">
+		<property name="name">CPU</property>
+		<property name="unit">%</property>
+		
+		<property name="preferredRollup">AVERAGE</property>
+		
+		<property name="strategies">
+			<list elementClass="com.realstatus.hgs.model.metric.normalisation.CalculationStrategy">
+			
+			
+				<bean class="com.realstatus.hgs.model.metric.normalisation.RawMetricStrategy">
+					<property name="strategyTitle">windows hosts and novell</property>
+					<property name="name">CpuPercentBusy</property>
+					<property name="sourcedFromType">Node</property>
+					<property name="hasSourcedFromField">false</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.RawMetricStrategy">
+					<property name="strategyTitle">compaq insight manager</property>
+					<property name="name">Cim5MinCpuUtilPct</property>
+					<property name="sourcedFromType">Node</property>
+					<property name="hasSourcedFromField">false</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.RawMetricStrategy">
+					<property name="strategyTitle">cisco router (and PIX)</property>
+					<property name="name">cpmCPUTotal5min</property>
+					<property name="sourcedFromType">Node</property>
+					<property name="hasSourcedFromField">false</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.RawMetricStrategy">
+					<property name="strategyTitle">Net-app</property>
+					<property name="name">cpuBusyTimePct</property>
+					<property name="sourcedFromType">Node</property>
+					<property name="hasSourcedFromField">false</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.RawMetricStrategy">
+					<property name="strategyTitle">juniper-erx-systemslot</property>
+					<property name="name">juniSMCpuUtilPct</property>
+					<property name="sourcedFromType">Node</property>
+					<property name="hasSourcedFromField">false</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.RawMetricStrategy">
+					<property name="strategyTitle">IBM AIX</property>
+					<property name="name">aixSeCPUUtilisation</property>
+					<property name="sourcedFromType">Node</property>
+					<property name="hasSourcedFromField">false</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.RawMetricStrategy">
+					<property name="strategyTitle">sgProxy</property>
+					<property name="name">CpuBusyPerCent</property>
+					<property name="sourcedFromType">Node</property>
+					<property name="hasSourcedFromField">false</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.RawMetricStrategy">
+					<property name="strategyTitle">zxtm</property>
+					<property name="name">sysCPUBusyPercent</property>
+					<property name="sourcedFromType">Node</property>
+					<property name="hasSourcedFromField">false</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.RawMetricStrategy">
+					<property name="strategyTitle">snAgGbCpu1MinAvg - foundary</property>
+					<property name="name">snAgGbCpu1MinAvg</property>
+					<property name="sourcedFromType">Node</property>
+					<property name="hasSourcedFromField">false</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.RawMetricStrategy">
+					<property name="strategyTitle">HP-procurve</property>
+					<property name="name">hpSwitchCpuStat</property>
+					<property name="sourcedFromType">Node</property>
+					<property name="hasSourcedFromField">false</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.RawMetricStrategy">
+					<property name="strategyTitle">juniper-router</property>
+					<property name="name">juniperCpuFeb</property>
+					<property name="sourcedFromType">Node</property>
+					<property name="hasSourcedFromField">false</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.RawMetricStrategy">
+					<property name="strategyTitle">Checkpoint</property>
+					<property name="name">cpuUtilisation</property>
+					<property name="sourcedFromType">Node</property>
+					<property name="hasSourcedFromField">false</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.RawMetricStrategy">
+					<property name="strategyTitle">Altiga</property>
+					<property name="name">altigaCpuUtil</property>
+					<property name="sourcedFromType">Node</property>
+					<property name="hasSourcedFromField">false</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.RawMetricStrategy">
+					<property name="strategyTitle">HP UX</property>
+					<property name="name">hpuxCpuNice</property>
+					<property name="sourcedFromType">Node</property>
+					<property name="hasSourcedFromField">false</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.RawMetricStrategy">
+					<property name="strategyTitle">NetScaler</property>
+					<property name="name">NSresCpuUsage</property>
+					<property name="sourcedFromType">Node</property>
+					<property name="hasSourcedFromField">false</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.RawMetricStrategy">
+					<property name="strategyTitle">3Com</property>
+					<property name="name">a3sysCpuUtil</property>
+					<property name="sourcedFromType">Node</property>
+					<property name="hasSourcedFromField">false</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.RawMetricStrategy">
+					<property name="strategyTitle">F5 fortinet, sysstar</property>
+					<property name="name">fnSysCpuUsage</property>
+					<property name="sourcedFromType">Node</property>
+					<property name="hasSourcedFromField">false</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.RawMetricStrategy">
+					<property name="strategyTitle">Riverbed</property>
+					<property name="name">rbshCpuLoad5</property>
+					<property name="sourcedFromType">Node</property>
+					<property name="hasSourcedFromField">false</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.RawMetricStrategy">
+					<property name="strategyTitle">Force10</property>
+					<property name="name">force10CpuUsage</property>
+					<property name="sourcedFromType">Node</property>
+					<property name="hasSourcedFromField">false</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.RawMetricStrategy">
+					<property name="strategyTitle">IVE</property>
+					<property name="name">iveCpuUtil</property>
+					<property name="sourcedFromType">Node</property>
+					<property name="hasSourcedFromField">false</property>
+				</bean>
+				
+				<bean class="com.realstatus.hgs.model.metric.normalisation.ScriptedMetricStrategy">
+					<property name="strategyTitle">UcdMib</property>
+					
+					<!--
+					     	Required metrics (From Net-SNMP UCD-SNMP-MIB)
+		 
+							 The calculation:
+							 
+							 CPU (%) = 	((CpuRawSystem + CpuRawSoftIRQ + CpuRawUser + CpuRawNice + CpuRawKernel + CpuRawInterrupt + CpuRawWait) /
+							 		(CpuRawIdle + CpuRawSystem + CpuRawSoftIRQ + CpuRawUser + CpuRawNice + CpuRawKernel + CpuRawInterrupt + CpuRawWait)) * 100
+							 
+							 Essentially we're saying that % utilisation = % CPU ticks spent doing anything other than idling.
+					-->
+					
+					<property name="dataRequirements">
+						<bean class="com.realstatus.hgs.collection.requirements.CollectorDataRequirements">
+							<property name="metrics">
+								<list>
+									<bean class="com.realstatus.hgs.collection.requirements.RawMetricRequirement">
+										<property name="sourcedFromType">Node</property>
+										<property name="name">CpuRawIdle</property>
+									</bean>
+									<bean class="com.realstatus.hgs.collection.requirements.RawMetricRequirement">
+										<property name="sourcedFromType">Node</property>
+										<property name="name">CpuRawSystem</property>
+									</bean>
+									<bean class="com.realstatus.hgs.collection.requirements.RawMetricRequirement">
+										<property name="sourcedFromType">Node</property>
+										<property name="name">CpuRawSoftIRQ</property>
+									</bean>
+									<bean class="com.realstatus.hgs.collection.requirements.RawMetricRequirement">
+										<property name="sourcedFromType">Node</property>
+										<property name="name">CpuRawUser</property>
+									</bean>
+									<bean class="com.realstatus.hgs.collection.requirements.RawMetricRequirement">
+										<property name="sourcedFromType">Node</property>
+										<property name="name">CpuRawNice</property>
+									</bean>
+									<bean class="com.realstatus.hgs.collection.requirements.RawMetricRequirement">
+										<property name="sourcedFromType">Node</property>
+										<property name="name">CpuRawKernel</property>
+									</bean>
+									<bean class="com.realstatus.hgs.collection.requirements.RawMetricRequirement">
+										<property name="sourcedFromType">Node</property>
+										<property name="name">CpuRawInterrupt</property>
+									</bean>
+									<bean class="com.realstatus.hgs.collection.requirements.RawMetricRequirement">
+										<property name="sourcedFromType">Node</property>
+										<property name="name">CpuRawWait</property>
+									</bean>
+								</list>
+							</property>
+						</bean>
+					</property>
+					
+					
+					<property name="script">
+					<![CDATA[
+						function calculate(node) {
+							var cpuRawIdle = node.rawMetricTimeSeries[new DefaultMetricDescriptor('CpuRawIdle', $rollup)];
+							var cpuRawSystem = node.rawMetricTimeSeries[new DefaultMetricDescriptor('CpuRawSystem', $rollup)];
+							var cpuRawSoftIRQ = node.rawMetricTimeSeries[new DefaultMetricDescriptor('CpuRawSoftIRQ', $rollup)];
+							var cpuRawUser = node.rawMetricTimeSeries[new DefaultMetricDescriptor('CpuRawUser', $rollup)];
+							var cpuRawNice = node.rawMetricTimeSeries[new DefaultMetricDescriptor('CpuRawNice', $rollup)];
+							var cpuRawKernel = node.rawMetricTimeSeries[new DefaultMetricDescriptor('CpuRawKernel', $rollup)];
+							var cpuRawInterrupt = node.rawMetricTimeSeries[new DefaultMetricDescriptor('CpuRawInterrupt', $rollup)];
+							var cpuRawWait = node.rawMetricTimeSeries[new DefaultMetricDescriptor('CpuRawWait', $rollup)];
+							
+							if (cpuRawIdle == null ||
+								    (cpuRawSystem == null &&
+								    cpuRawSoftIRQ == null &&
+								    cpuRawUser == null &&
+								    cpuRawNice == null &&
+								    cpuRawKernel == null &&
+								    cpuRawInterrupt == null &&
+								    cpuRawWait == null)) {
+							    return 'expected value not available for CPU calculation';
+							}
+							
+							var ticks = TimeSeries.addAll(
+								[cpuRawSystem, cpuRawSoftIRQ, cpuRawUser, cpuRawNice, cpuRawKernel, cpuRawInterrupt, cpuRawWait]);
+								
+							var ticksIncludingIdling = ticks.add(cpuRawIdle);
+							
+							return ticks.percentOf(ticksIncludingIdling);
+						}
+					]]>
+					</property>
+				</bean>
+				
+			</list>
+		</property>
+	</bean>
+
+</deployment>

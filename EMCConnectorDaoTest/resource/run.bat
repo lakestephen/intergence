@@ -1,0 +1,1 @@
+"%JAVA_HOME%\bin\java.exe" -cp *;. com.intergence.hgs.emc.dao.DaoTest

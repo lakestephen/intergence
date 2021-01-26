@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RequestPacket xmlns="http://www.emc.com/schemas/celerra/xml_api" apiVersion="V1_1">
+    <RequestEx>
+        <Query>
+            <FileSystemLocationQueryParams url="cifs://dhsm_dest_cifs.emcpune.com/dhsm_share"></FileSystemLocationQueryParams>
+            <FileSystemLocationQueryParams url="nfs://10.4.86.147/corefs54"></FileSystemLocationQueryParams>
+            <FileSystemLocationQueryParams url="nfs://10.4.86.147/dhsm_dest_fs"></FileSystemLocationQueryParams>
+        </Query>
+    </RequestEx>
+</RequestPacket>

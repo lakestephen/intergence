@@ -1,0 +1,11 @@
+{
+  "rules": [
+    {
+      "name": "test Rule",
+      "sourceTopologyType": "ENDPOINT",
+      "sourceAttributeNameRegex": "ip",
+      "destinationTopologyType": "NODE",
+      "destinationAttributeNameRegex": "ip"
+    }
+  ]
+}

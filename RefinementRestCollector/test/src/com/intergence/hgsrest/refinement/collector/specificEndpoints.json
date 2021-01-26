@@ -1,0 +1,13 @@
+{
+  "rules": [
+    {
+      "name": "Steve's Specific Endpoint rule",
+      "sourceTopologyType": "ENDPOINT",
+      "sourceAttributeNameRegex": "ip",
+      "sourceAttributeValueRegex": "1\\.2\\.3\\.4",
+      "destinationTopologyType": "ENDPOINT",
+      "destinationAttributeNameRegex": "ip",
+      "destinationAttributeValueRegex": "1\\.2\\.3\\.4"
+    }
+  ]
+}
